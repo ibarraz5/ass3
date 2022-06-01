@@ -1,0 +1,52 @@
+plugins {
+    id 'java'
+    id 'application'
+}
+
+apply plugin: 'application'
+apply plugin: 'java'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.6.0'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine'
+    implementation group: 'org.json', name: 'json', version: '20200518'
+}
+
+task runServer(type: JavaExec) {
+
+    group 'UDP:Server/Client'
+    description 'Runs a server for a single client UDP connection.'
+    classpath = sourceSets.main.runtimeClasspath
+    main = 'UDP_ServerClient.ServerUDP'
+
+	if (project.hasProperty('port')) {
+		args project.property('port')
+	} else {
+		args '8080'
+	}	
+}
+
+task runClient(type: JavaExec) {
+
+    group 'UDP:Server/Client'
+    description 'Runs a single client UDP connection to the server.'
+    classpath = sourceSets.main.runtimeClasspath
+    main = 'UDP_ServerClient.ClientGui'
+	   
+	if (project.hasProperty('port') && project.hasProperty('host')) {
+		args project.property('port')
+		args project.property('host')
+	} else {
+		args '8080'
+		args 'localhost'
+	}	
+}
+
+
+test {
+    useJUnitPlatform()
+}
