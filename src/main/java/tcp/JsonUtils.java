@@ -1,4 +1,4 @@
-package fauxSolution.tcp;
+package tcp;
 
 import org.json.JSONObject;
 
