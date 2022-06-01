@@ -90,6 +90,9 @@ public class Client {
           in.close();
           System.exit(0);
           break;
+                    case (6):
+          request = game();
+          break;
         default:
           System.out.println("Please select a valid option (1-5).");
           break;
