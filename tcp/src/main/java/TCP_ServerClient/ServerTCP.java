@@ -11,13 +11,6 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.*;
 
-/**
- * TCP_ServerClient.ServerTCP.java
- * Server that runs the Picture guess game.
- *
- * @author Terry Grant Simpson
- * updated  11/13/2021
- */
 
 @SuppressWarnings({"TryFinallyCanBeTryWithResources"})
 public class ServerTCP {
@@ -253,7 +246,7 @@ public class ServerTCP {
 			JSONObject json = new JSONObject();
 			json.put("sequence", 1);
 			json.put("datatype", "name");
-			json.put("data", "Server->Welcome to Picture Guess!!!  Please submit your name.");
+			json.put("data", "Server->Welcome to Guessing Quotes!  Please submit your name.");
 			json.put("image", "");
 			return json;
 		}
