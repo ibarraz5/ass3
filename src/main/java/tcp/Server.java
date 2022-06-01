@@ -49,7 +49,7 @@ public class Server {
 
     json.put("type", "image");
 
-    File file = new File("img/To-Funny-For-Words1.png");
+    File file = new File("img/Jack_Sparrow/quote4.png");
     if (!file.exists()) {
       System.err.println("Cannot find file: " + file.getAbsolutePath());
       System.exit(-1);
