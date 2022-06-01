@@ -83,6 +83,7 @@ public class Server {
     frame.setLayout(new GridBagLayout());
     frame.setMinimumSize(new Dimension(500, 500));
     frame.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+    return json;
   }
   
   public static JSONObject random() throws IOException {
