@@ -44,7 +44,11 @@ public class Client {
     request.put("selected", 3);
     return request;
   }
-
+  public static JSONObject game() {
+    JSONObject request = new JSONObject();
+    request.put("selected", 6);
+    return request;
+  }
   public static JSONObject random() {
     JSONObject request = new JSONObject();
     request.put("selected", 4);
@@ -60,7 +64,7 @@ public class Client {
 
       Scanner input = new Scanner(System.in);
       int choice;
-      System.out.println("Please select a valid option (1-5). 0 to diconnect the client");
+      System.out.println("Please select a valid option (1-6). 0 to diconnect the client");
       do {
         choice = input.nextInt(); // what if not int.. shoudl error handle this
         JSONObject request = null;
