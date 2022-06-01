@@ -77,6 +77,7 @@ public class Server {
   }
 
     public static JSONObject game() throws IOException{
+    JSONObject json = new JSONObject();
     JDialog frame;
     frame = new JDialog();
     frame.setLayout(new GridBagLayout());
