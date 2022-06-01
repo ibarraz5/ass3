@@ -8,16 +8,7 @@ import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.IOException;
 
-/**
- * The picture grid
- * <p>
- * Note: This is a Moore state machine. Check the enum States to see the different modes it can be in.
- * <p>
- * Methods of interest
- * ----------------------
- * newGame(int dimension) - Reset the board and set grid size to dimension x dimension
- * insertImage(String fname, int row, int col) - Insert an image at (col, row)
- */
+
 public class PicturePanel extends JPanel {
 	// needed as JPanel is Serializable
 	private static final long serialVersionUID = 1L;
