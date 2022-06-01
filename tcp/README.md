@@ -1,4 +1,4 @@
-TCP Picture Guessing Game
+#TCP Picture Guessing Game
 
 a) Description:
 	The picture guessing game is a single connection server/client model that adheres to the TCP protocol.
