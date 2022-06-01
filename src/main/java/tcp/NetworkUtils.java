@@ -1,4 +1,4 @@
-package fauxSolution.tcp;
+package tcp;
 
 import java.io.IOException;
 import java.io.InputStream;
