@@ -1,4 +1,4 @@
-package fauxSolution.tcp;
+package tcp;
 
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
