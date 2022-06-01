@@ -28,7 +28,7 @@ import javax.swing.WindowConstants;
  * > Does not show when created. show() must be called to show he GUI.
  * 
  */
-public class ClientGui implements Assignment3Starter.OutputPanel.EventHandlers {
+public class ClientGui implements Game.OutputPanel.EventHandlers {
   JDialog frame;
   PicturePanel picturePanel;
   OutputPanel outputPanel;
