@@ -12,6 +12,13 @@ import java.net.Socket;
 import java.util.Base64;
 import java.util.Random;
 
+import java.awt.Dimension;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import java.io.IOException;
+import javax.swing.JDialog;
+import javax.swing.WindowConstants;
+
 import javax.imageio.ImageIO;
 
 import org.json.*;
@@ -69,6 +76,14 @@ public class Server {
     return error("Unable to save image to byte array");
   }
 
+    public static JSONObject game() throws IOException{
+    JDialog frame;
+    frame = new JDialog();
+    frame.setLayout(new GridBagLayout());
+    frame.setMinimumSize(new Dimension(500, 500));
+    frame.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+  }
+  
   public static JSONObject random() throws IOException {
     Random rand = new Random();
     int random = rand.nextInt(3);
@@ -119,6 +134,9 @@ public class Server {
                   break;
                 case (4):
                   returnMessage = random();
+                  break;
+                      case (6):
+                  returnMessage = game();
                   break;
                 default:
                   returnMessage = error("Invalid selection: " + choice + " is not an option");
