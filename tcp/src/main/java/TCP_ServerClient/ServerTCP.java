@@ -196,7 +196,8 @@ public class ServerTCP {
 		 * @return true=client won | false=client did not win
 		 */
 		public boolean win() {
-			if (correctGuess == pictureCount) {
+			String answer= pictureName.get(i);
+			if (correctGuess == answer) {
 				timer.cancel();
 				return true;
 			}
