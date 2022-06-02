@@ -64,11 +64,10 @@ public class GridMaker {
 		BufferedImage img = ImageIO.read(file);
 		int divisibleHeight = img.getHeight(); 
 		int divisibleWidth = img.getWidth(); 
-		img = resize(img, divisibleWidth, divisibleHeight);
 
 		// calculate crop size
-		int cellHeight = divisibleHeight / dimension;
-		int cellWidth = divisibleWidth / dimension;
+		int cellHeight = divisibleHeight;
+		int cellWidth = divisibleWidth;
 
 		String oldFilename = path.getFilename();
 		// for each crop section
