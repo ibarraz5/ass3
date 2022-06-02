@@ -513,6 +513,7 @@ public class ServerTCP {
 							NetworkUtility.Send(out, JsonUtility.toByteArray(jsonToClient));
 
 							byte[] bytesFromClient = NetworkUtility.Receive(in);
+							jsonFromClient = JsonUtility.fromByteArray(bytesFromClient);
 							String guessIt= jsonFromClient.getString("data");
 							if(game.guess(guessIt, key)){
 								pointsGame= pointsGame+3;
