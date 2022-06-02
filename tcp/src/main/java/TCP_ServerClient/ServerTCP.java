@@ -504,7 +504,7 @@ public class ServerTCP {
 
 					// Start with first element in picture path
 					for (int i = 0; i < 1; i++) {
-						String key = pictureName.get(i);
+						String key = "Captain America";
 
 						for (int j = 1; j < 2; j++) {
 
@@ -529,12 +529,14 @@ public class ServerTCP {
 							String fullFilePath = "src/main/resources/images/win.jpg";
 							jsonToClient = ServerResponse.image(fullFilePath);
 							NetworkUtility.Send(out, JsonUtility.toByteArray(jsonToClient));
-							break;
 						}else {
 							String fullFilePath = "src/main/resources/images/lose.jpg";
 							jsonToClient = ServerResponse.image(fullFilePath);
 							NetworkUtility.Send(out, JsonUtility.toByteArray(jsonToClient));							
 						}
+						jsonToClient = ServerResponse.points(pointsGame);
+						NetworkUtility.Send(out, JsonUtility.toByteArray(jsonToClient));
+						break;
 					}
 				}
 
