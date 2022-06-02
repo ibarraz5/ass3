@@ -293,7 +293,7 @@ public class ServerTCP {
 			json.put("data", "Server-> Type [leader board] to display leader board.");
 			return json;
 		}
-		String leaderBoard= "John 5 points";		
+		static String leaderBoard= "John 5 points";		
 		
 		public static JSONObject leaderboardDisplay() {
 			JSONObject json = new JSONObject();
