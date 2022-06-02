@@ -374,7 +374,7 @@ public class ServerTCP {
 
 		try {
 			serverSocket = new ServerSocket(port);
-			System.out.println("Server waiting for client connection........");
+			System.out.println("Server waiting for client to connect...");
 			Socket socket = null;
 
 			try {
