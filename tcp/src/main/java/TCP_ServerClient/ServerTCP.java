@@ -393,6 +393,7 @@ public class ServerTCP {
 		String name = "";
 		int count = 0;
 		boolean init = false;
+		boolean winGame= false;
 
 
 		try {
@@ -408,6 +409,7 @@ public class ServerTCP {
 
 				JSONObject jsonToClient = null;
 				JSONObject jsonFromClient;
+				JSONObject jsonFromClient2;				
 
 				// Initial welcome and name request
 				NetworkUtility.Send(out, JsonUtility.toByteArray(ServerResponse.nameRequest()));
@@ -503,29 +505,32 @@ public class ServerTCP {
 
 							byte[] bytesFromClient = NetworkUtility.Receive(in);
 							jsonFromClient = JsonUtility.fromByteArray(bytesFromClient);
-
-							if(game.guess(jsonFromClient.getString("data"), key)){
+							String guessIt= jsonFromClient2.getString("data");
+							if(game.guess(guessIt, key)){
 								points= points+3;
+								winGame=true;
+								break;
 							}
 							if (jsonFromClient.getInt("sequence") == 5 && game.guess(jsonFromClient.getString("data"), key)) {
 								break;
 							}
 						}
 
-						if (game.win()) {
+						if (winGame=true) {
 							String fullFilePath = "src/main/resources/images/win.jpg";
 							jsonToClient = ServerResponse.image(fullFilePath);
 							NetworkUtility.Send(out, JsonUtility.toByteArray(jsonToClient));
 							break;
+						}else {
+							String fullFilePath = "src/main/resources/images/lose.jpg";
+							jsonToClient = ServerResponse.image(fullFilePath);
+							NetworkUtility.Send(out, JsonUtility.toByteArray(jsonToClient));							
 						}
 					}
 				}
-				if (!game.win()) {
-					String fullFilePath = "src/main/resources/images/lose.jpg";
-					jsonToClient = ServerResponse.image(fullFilePath);
-					NetworkUtility.Send(out, JsonUtility.toByteArray(jsonToClient));
-				}
-				jsonToClient = ServerResponse.points(points);	
+
+				jsonToClient = ServerResponse.points(points);
+				NetworkUtility.Send(out, JsonUtility.toByteArray(jsonToClient));				
 			}
 			catch (Exception e) {
 				System.out.println("Client disconnect");
