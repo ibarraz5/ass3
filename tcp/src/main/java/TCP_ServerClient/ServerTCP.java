@@ -436,38 +436,23 @@ public class ServerTCP {
 								}
 								catch (NumberFormatException e) { jsonToClient = ServerResponse.error("Invalid Request", 2);}
 							}
-							case (3) -> {
-								try {
-									choice = Integer.parseInt(jsonFromClient.getString("data"));
-								        if(choice==1) {
-										case(4);
-									}
-									else if(choice==2){
-										jsonToClient = ServerResponse.leaderboardRequest();
-									}
-									else (choice < 1 || choice > 2) {
-										choice = 0;
-										System.out.println("Acceptable range is 1 - 2.");
-										jsonToClient = ServerResponse.error("Acceptable range is 1 - 2.", 3);
-									}									
-								}
-								catch (NumberFormatException e) { jsonToClient = ServerResponse.error("Invalid Request", 3);}								
-							}								
+							
 							// Ready
-							case (4) -> {
-								String ready = jsonFromClient.getString("data");
-								if (!ready.equalsIgnoreCase("ready")) {
-									jsonToClient = ServerResponse.error("Type [ready] when your ready to play.", 4);
-								}
-								else {
+							case (3) -> {
+								String choice = jsonFromClient.getString("data");
+								if(choice.equals("leader board")){
 									init = true;
+								}else if(choice.equals("ready")){
+									init = true;
+								else{
+									jsonToClient = ServerResponse.error("Type [ready] when your ready to play.", 3);									
 								}
 							}
 							// Leaderboard 
-							case (5) -> {
+							case (4) -> {
 								String leaderBoard = jsonFromClient.getString("data");
 								if (!leaderBoard.equalsIgnoreCase("leader board")) {
-									jsonToClient = ServerResponse.error("Type [leader board] for leader board.", 5);
+									jsonToClient = ServerResponse.error("Type [leader board] for leader board.", 4);
 								}
 								else {
 									init = true;
