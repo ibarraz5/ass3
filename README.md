@@ -1,7 +1,8 @@
 # Example Code for client asking for different data
 These examples show a TCP and the same code with UDP. 
 
-https://www.youtube.com/watch?v=1tNtIAgrzDI
+# Link to Screencast:
+- 
 
 ## Description
 
