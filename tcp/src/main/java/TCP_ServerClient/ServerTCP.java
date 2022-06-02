@@ -459,7 +459,7 @@ public class ServerTCP {
 							}
 							case (4) -> {
 								String ready = jsonFromClient.getString("data");
-							        if(choice.equals("ready")){
+							        if(ready.equals("ready")){
 									init = true;
 								}
 								else{
