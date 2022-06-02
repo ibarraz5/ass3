@@ -439,17 +439,17 @@ public class ServerTCP {
 							case (3) -> {
 								try {
 									choice = Integer.parseInt(jsonFromClient.getString("data"));
-									if (choice < 1 || choice > 2) {
+								        if(choice==1) {
+										case(4);
+									}
+									else if(choice==2){
+										jsonToClient = ServerResponse.leaderboardRequest();
+									}
+									else (choice < 1 || choice > 2) {
 										choice = 0;
 										System.out.println("Acceptable range is 1 - 2.");
 										jsonToClient = ServerResponse.error("Acceptable range is 1 - 2.", 3);
-									}
-									else if(choice==1) {
-										jsonToClient = ServerResponse.readyRequest();
-									}
-									else{
-										jsonToClient = ServerResponse.leaderboardRequest();
-									}										
+									}									
 								}
 								catch (NumberFormatException e) { jsonToClient = ServerResponse.error("Invalid Request", 3);}								
 							}								
@@ -457,7 +457,7 @@ public class ServerTCP {
 							case (4) -> {
 								String ready = jsonFromClient.getString("data");
 								if (!ready.equalsIgnoreCase("ready")) {
-									jsonToClient = ServerResponse.error("Type [ready] when your ready to play.", 3);
+									jsonToClient = ServerResponse.error("Type [ready] when your ready to play.", 4);
 								}
 								else {
 									init = true;
@@ -467,7 +467,7 @@ public class ServerTCP {
 							case (5) -> {
 								String leaderBoard = jsonFromClient.getString("data");
 								if (!leaderBoard.equalsIgnoreCase("leader board")) {
-									jsonToClient = ServerResponse.error("Type [leader board] for leader board.", 4);
+									jsonToClient = ServerResponse.error("Type [leader board] for leader board.", 5);
 								}
 								else {
 									init = true;
