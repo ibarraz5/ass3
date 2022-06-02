@@ -449,9 +449,7 @@ public class ServerTCP {
 							case (3) -> {
 								String choice = jsonFromClient.getString("data");
 								if(choice.equals("leader board")){
-									System.out.println("Leader Board: ");
-									System.out.println("----------------- ");
-									System.out.println(leaderBoard);									
+										jsonToClient = ServerResponse.leaderboardDisplay();									
 								}else if(choice.equals("ready")){
 									init = true;
 								}
