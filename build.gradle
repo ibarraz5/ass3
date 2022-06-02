@@ -12,7 +12,7 @@ implementation group: 'org.json', name: 'json', version: '1'
 //define main class
 mainClassName = 'Concentration'
 
-task TCPServer(type: JavaExec) {
+task runServer(type: JavaExec) {
   group 'tcp'
   description 'Displays a GUI for a game of concentration'
 
@@ -22,7 +22,7 @@ task TCPServer(type: JavaExec) {
   standardInput = System.in
 }
 
-task TCPClient(type: JavaExec) {
+task runClient(type: JavaExec) {
   group 'tcp'
   description 'Takes an image and makes the rebus library'
 
