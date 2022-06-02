@@ -279,25 +279,17 @@ public class ServerTCP {
 		}		
 		public static JSONObject readyRequest() {
 			JSONObject json = new JSONObject();
-			json.put("sequence", 4);
+			json.put("sequence", 5);
 			json.put("datatype", "config");
 			json.put("data", "Server-> Type [ready] when you're ready to play.");
 			return json;
 		}
 		
-		public static JSONObject leaderboardRequest() {
-			JSONObject json = new JSONObject();
-			json.put("sequence", 5);
-			json.put("datatype", "config");
-			json.put("data", "Or");			
-			json.put("data", "Server-> Type [leader board] to display leader board.");
-			return json;
-		}
 		static String leaderBoard= "John 5 points";		
 		
 		public static JSONObject leaderboardDisplay() {
 			JSONObject json = new JSONObject();
-			json.put("sequence", 6);
+			json.put("sequence", 4);
 			json.put("datatype", "config");		
 			json.put("data", "Server-> Leader Board: " + leaderBoard);
 			return json;
