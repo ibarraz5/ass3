@@ -328,7 +328,7 @@ public class ServerTCP {
 			JSONObject json = new JSONObject();
 			json.put("sequence", 7);
 			json.put("datatype", "config");		
-			json.put("data", "Server-> Your points scored: " + gamePoints);
+			json.put("data", "Server-> Your points scored: " + points);
 			return json;
 		}		
 
@@ -539,7 +539,6 @@ public class ServerTCP {
 						break;
 					}
 				}
-
 				jsonToClient = ServerResponse.points(pointsGame);
 				NetworkUtility.Send(out, JsonUtility.toByteArray(jsonToClient));				
 			}
