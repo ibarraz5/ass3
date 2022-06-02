@@ -78,7 +78,6 @@ public class GridMaker {
 				path.setFilename(oldFilename + "_" + r + "_" + c);
 				path.setExtension("jpg");
 				File pathFile = new File(path.toString());
-				ImageIO.write(output, "jpg", pathFile);
 			}
 		}
 		// finish with useful info
