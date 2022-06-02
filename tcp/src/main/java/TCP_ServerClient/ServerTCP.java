@@ -168,7 +168,7 @@ public class ServerTCP {
 		}
 
 	        public boolean win() {
-			String key= "answer";
+			String int= 4;
 			if (correctGuess == key) {
 				timer.cancel();
 				return true;
