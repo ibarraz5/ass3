@@ -159,6 +159,7 @@ public class ClientGui implements OutputPanel.EventHandlers {
 				case (2) -> request = ClientRequest.reqPicCount(input);
 				case (3) -> request = ClientRequest.reqChoice(input);
 				case (4) -> request = ClientRequest.reqReady(input);
+				case (5) -> request = ClientRequest.reqGuess(input);					
 				default -> System.out.println("Bad sequence");
 			}
 		}
@@ -168,7 +169,8 @@ public class ClientGui implements OutputPanel.EventHandlers {
 				case (1) -> request = ClientRequest.reqName(input);
 				case (2) -> request = ClientRequest.reqPicCount(input);
 				case (3) -> request = ClientRequest.reqChoice(input);
-				case (4) -> request = ClientRequest.reqReady(input);					
+				case (4) -> request = ClientRequest.reqReady(input);	
+				case (5) -> request = ClientRequest.reqGuess(input);										
 				default -> System.out.println("Bad sequence");
 			}
 		}
@@ -280,6 +282,13 @@ public class ClientGui implements OutputPanel.EventHandlers {
 			json.put("data", ready);
 			return json;
 		}
+		public static JSONObject reqGuess(String guess) {
+			JSONObject json = new JSONObject();
+			json.put("sequence", 5);
+			json.put("datatype", "guess");
+			json.put("data", guess);
+			return json;
+		}		
 	}
 
 	/**
