@@ -449,7 +449,6 @@ public class ServerTCP {
 								String choice = jsonFromClient.getString("data");
 								if(choice.equals("leader board")){
 										jsonToClient = ServerResponse.leaderboardDisplay();
-										jsonToClient = ServerResponse.readyRequest();																		
 								}else if(choice.equals("ready")){
 									init = true;
 								}
