@@ -461,6 +461,9 @@ public class ServerTCP {
 							}							
 							case (4) -> {
 								String ready = jsonFromClient.getString("data");
+								PictureGuessGame game = new PictureGuessGame(name, count);
+				ArrayList<String> picturePath = game.getPicturePath();
+				ArrayList<String> pictureName = game.getAnswerKeys();
 							        if(ready.equals("ready")){
 										for (int i = 0; i < 1; i++) {
 											String key = "Captain America";
