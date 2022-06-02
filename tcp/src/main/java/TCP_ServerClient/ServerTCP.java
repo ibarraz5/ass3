@@ -105,9 +105,6 @@ public class ServerTCP {
 				}
 			}
 
-			// Shuffle folders
-			Collections.shuffle(folders);
-
 			// Remove folders to meet the client input
 			for (int i = folders.size(); i > pictureCount; i--) {
 				folders.remove(i - 1);
@@ -170,6 +167,15 @@ public class ServerTCP {
 			return false;
 		}
 
+	        public boolean win() {
+			String key= "answer");
+			if (correctGuess == key) {
+				timer.cancel();
+				return true;
+			}
+
+			return false;
+			}		
 
 		/**
 		 * Generate the answer key
@@ -494,14 +500,6 @@ public class ServerTCP {
 								break;
 							}
 						}
-							public boolean win() {
-								if (correctGuess == key) {
-									timer.cancel();
-									return true;
-								}
-
-									return false;
-							}
 
 						if (game.win()) {
 							String fullFilePath = "src/main/resources/images/win.jpg";
