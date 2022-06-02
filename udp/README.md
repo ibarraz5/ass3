@@ -77,7 +77,14 @@ a) Description:
 	handled in the most recoverable and informative way possible. Good general error
 	handling and output. Your client/server should not crash even when wrong things
 	are written in the input field.
+	
+## Running the example
 
+Running the build.gradle file on the individual folder "udp" can be done with:
+- cd udp/ 
+- `gradle runServer`
+- `gradle runClient`
+	
 b) How to Run:
 	Step 1: open cli and navigate to "build.gradle" file path
 	Step 2: gradle runServer [Optional -Pport=<custom port value>]
