@@ -270,9 +270,16 @@ public class ServerTCP {
 		 *
 		 * @return JSON object with data
 		 */
-		public static JSONObject readyRequest() {
+		public static JSONObject choiceRequest() {
 			JSONObject json = new JSONObject();
 			json.put("sequence", 3);
+			json.put("datatype", "config");		
+			json.put("data", "Server-> Type [1] leaderboard or [2] ready to play.");
+			return json;
+		}		
+		public static JSONObject readyRequest() {
+			JSONObject json = new JSONObject();
+			json.put("sequence", 4);
 			json.put("datatype", "config");
 			json.put("data", "Server-> Type [ready] when you're ready to play.");
 			return json;
@@ -280,7 +287,7 @@ public class ServerTCP {
 
 		public static JSONObject leaderboardRequest() {
 			JSONObject json = new JSONObject();
-			json.put("sequence", 4);
+			json.put("sequence", 5);
 			json.put("datatype", "config");
 			json.put("data", "Or");			
 			json.put("data", "Server-> Type [leader board] to display leader board.");
@@ -424,8 +431,7 @@ public class ServerTCP {
 										jsonToClient = ServerResponse.error("Acceptable range is 1 - 6.", 2);
 									}
 									else {
-										jsonToClient = ServerResponse.readyRequest();
-										jsonToClient = ServerResponse.leaderboardRequest();
+										jsonToClient = ServerResponse.choiceRequest();
 									}
 								}
 								catch (NumberFormatException e) { jsonToClient = ServerResponse.error("Invalid Request", 2);}
