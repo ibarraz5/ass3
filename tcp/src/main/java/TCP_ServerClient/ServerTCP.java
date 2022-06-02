@@ -462,8 +462,41 @@ public class ServerTCP {
 							case (4) -> {
 								String ready = jsonFromClient.getString("data");
 							        if(ready.equals("ready")){
-									init = true;
-								}
+										for (int i = 0; i < 1; i++) {
+											String key = "Captain America";
+	
+											for (int j = 1; j < 2; j++) {
+	
+											String fullFilePath = picturePath.get(i) + "\\" + (pictureName.get(i) + j) + ".png";
+											jsonToClient = ServerResponse.image(fullFilePath);
+											NetworkUtility.Send(out, JsonUtility.toByteArray(jsonToClient));
+	
+											jsonFromClient = JsonUtility.fromByteArray(bytesFromClient);
+											String guessIt= jsonFromClient.getString("data");
+											if(game.guess(guessIt, key)){
+											pointsGame= pointsGame+3;
+											winGame=true;
+											break;
+											}
+									}
+	
+									if (winGame) {
+									String fullFilePath = "src/main/resources/images/win.jpg";
+									jsonToClient = ServerResponse.image(fullFilePath);
+									NetworkUtility.Send(out, JsonUtility.toByteArray(jsonToClient));
+									}else {
+									String fullFilePath = "src/main/resources/images/lose.jpg";
+									jsonToClient = ServerResponse.image(fullFilePath);
+									NetworkUtility.Send(out, JsonUtility.toByteArray(jsonToClient));							
+									}
+									jsonToClient = ServerResponse.points(pointsGame);
+									NetworkUtility.Send(out, JsonUtility.toByteArray(jsonToClient));
+									break;
+									}
+									jsonToClient = ServerResponse.points(pointsGame);
+									NetworkUtility.Send(out, JsonUtility.toByteArray(jsonToClient));
+									}
+									
 								else{
 									jsonToClient = ServerResponse.error("Type [ready] when you're ready to play.", 4);									
 								}
