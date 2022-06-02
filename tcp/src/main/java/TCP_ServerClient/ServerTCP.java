@@ -495,7 +495,6 @@ public class ServerTCP {
 				PictureGuessGame game = new PictureGuessGame(name, count);
 				ArrayList<String> picturePath = game.getPicturePath();
 				ArrayList<String> pictureName = game.getAnswerKeys();
-				int pointsGame = 0;
 
 				// Start game timer
 				game.startTimer();
@@ -539,7 +538,7 @@ public class ServerTCP {
 					}
 				}
 
-				jsonToClient = ServerResponse.points(points);
+				jsonToClient = ServerResponse.points(pointsGame);
 				NetworkUtility.Send(out, JsonUtility.toByteArray(jsonToClient));				
 			}
 			catch (Exception e) {
