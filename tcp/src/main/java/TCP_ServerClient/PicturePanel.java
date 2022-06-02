@@ -55,7 +55,7 @@ public class PicturePanel extends JPanel {
 	 */
 	public PicturePanel() {
 		setLayout(new FlowLayout());
-		setSize(500, 500);
+		setSize(1000, 1000);
 		labels = new JLabel[0][0];
 
 		state = States.NotStarted;
