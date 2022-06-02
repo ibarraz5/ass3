@@ -58,7 +58,7 @@ public class ServerTCP {
 			String answer = jsonFromClient.getString("data");
 			if(answer=="Captain America"){
 				points= points+3;
-			}else
+			}
 			
 		}
 
