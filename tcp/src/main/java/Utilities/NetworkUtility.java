@@ -3,12 +3,7 @@ package Utilities;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
-/**
- * NetworkUtility.java
- *
- * @author Terry Grant Simpson
- * updated  11/3/2021
- */
+
 public class NetworkUtility {
 
 	// https://mkyong.com/java/java-convert-byte-to-int-and-vice-versa/
@@ -46,8 +41,6 @@ public class NetworkUtility {
 		return bytes;
 	}
 
-	// first 4 bytes we read give us the length of the message we are about to receive
-	// next we call read again with the length of the actual bytes in the data we are interested in
 	public static byte[] Receive(InputStream in) throws IOException {
 		byte[] lengthBytes = Read(in, 4);
 		if (lengthBytes == null) return new byte[0];
