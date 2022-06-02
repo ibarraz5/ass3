@@ -286,7 +286,7 @@ public class ServerTCP {
 		}
 		
 		static String leaderBoard= "John 5 points";	
-		static String readyPlay= " Type [ready] to play.";				
+		static String readyPlay= " , Type [ready] to play.";				
 		
 		public static JSONObject leaderboardDisplay() {
 			JSONObject json = new JSONObject();
