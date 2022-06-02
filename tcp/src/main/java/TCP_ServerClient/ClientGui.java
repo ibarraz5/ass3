@@ -157,8 +157,8 @@ public class ClientGui implements OutputPanel.EventHandlers {
 			switch (jsonFromServer.getInt("sequence")) {
 				case (1) -> request = ClientRequest.reqName(input);
 				case (2) -> request = ClientRequest.reqPicCount(input);
-				case (3) -> request = ClientRequest.reqConfig(input);
-				case (4) -> request = ClientRequest.reqGuess(input);
+				case (3) -> request = ClientRequest.reqChoice(input);
+				case (4) -> request = ClientRequest.reqReady(input);
 				default -> System.out.println("Bad sequence");
 			}
 		}
@@ -167,7 +167,8 @@ public class ClientGui implements OutputPanel.EventHandlers {
 			switch (jsonFromServer.getInt("error sequence")) {
 				case (1) -> request = ClientRequest.reqName(input);
 				case (2) -> request = ClientRequest.reqPicCount(input);
-				case (3) -> request = ClientRequest.reqConfig(input);
+				case (3) -> request = ClientRequest.reqChoice(input);
+				case (4) -> request = ClientRequest.reqReady(input);					
 				default -> System.out.println("Bad sequence");
 			}
 		}
@@ -258,10 +259,10 @@ public class ClientGui implements OutputPanel.EventHandlers {
 		 * @param confirm "ready" input starts the game
 		 * @return JSON object with data
 		 */
-		public static JSONObject reqConfig(String confirm) {
+		public static JSONObject reqChoice(String confirm) {
 			JSONObject json = new JSONObject();
 			json.put("sequence", 3);
-			json.put("datatype", "config");
+			json.put("datatype", "choice");
 			json.put("data", confirm);
 			return json;
 		}
@@ -272,11 +273,11 @@ public class ClientGui implements OutputPanel.EventHandlers {
 		 * @param guess client guess for current image
 		 * @return JSON object with data
 		 */
-		public static JSONObject reqGuess(String guess) {
+		public static JSONObject reqReady(String ready) {
 			JSONObject json = new JSONObject();
 			json.put("sequence", 4);
-			json.put("datatype", "guess");
-			json.put("data", guess);
+			json.put("datatype", "ready");
+			json.put("data", ready);
 			return json;
 		}
 	}
