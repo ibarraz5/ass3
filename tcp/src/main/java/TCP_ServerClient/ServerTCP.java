@@ -48,18 +48,11 @@ public class ServerTCP {
 		/**
 		 * Initializes game
 		 */
-		int points= 0;
 		private void initializeGame() {
 			this.totalMilliseconds = calculateTime(pictureCount);
 			this.hasRemainingTime = true;
 			this.picturePath = generateRandPics();
-			this.answerKeys = generateAnswerKey();
-			
-			String answer = jsonFromClient.getString("data");
-			if(answer=="Captain America"){
-				points= points+3;
-			}
-			
+			this.answerKeys = generateAnswerKey();					
 		}
 
 		/**
