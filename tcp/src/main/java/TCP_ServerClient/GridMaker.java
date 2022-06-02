@@ -7,11 +7,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.Stack;
 
-/**
- * Creates the square image grid used in Assignment 3
- * <p>
- * Usage: gradle Maker --args="<image to slice> <size>"
- */
+
 public class GridMaker {
 
 	public GridMaker() {
@@ -66,8 +62,8 @@ public class GridMaker {
 
 		// Read in image and adjust
 		BufferedImage img = ImageIO.read(file);
-		int divisibleHeight = img.getHeight() - (img.getHeight() % dimension);
-		int divisibleWidth = img.getWidth() - (img.getWidth() % dimension);
+		int divisibleHeight = img.getHeight() 
+		int divisibleWidth = img.getWidth() 
 		img = resize(img, divisibleWidth, divisibleHeight);
 
 		// calculate crop size
