@@ -384,7 +384,6 @@ public class ServerTCP {
 		// Initialize variables
 		String name = "";
 		int count = 0;
-		int choice = 0;
 		boolean init = false;
 
 
@@ -444,20 +443,12 @@ public class ServerTCP {
 									init = true;
 								}else if(choice.equals("ready")){
 									init = true;
+								}
 								else{
 									jsonToClient = ServerResponse.error("Type [ready] when your ready to play.", 3);									
 								}
 							}
-							// Leaderboard 
-							case (4) -> {
-								String leaderBoard = jsonFromClient.getString("data");
-								if (!leaderBoard.equalsIgnoreCase("leader board")) {
-									jsonToClient = ServerResponse.error("Type [leader board] for leader board.", 4);
-								}
-								else {
-									init = true;
-								}
-							}								
+								
 							default -> {
 								if (jsonToClient != null) {
 									int seq = jsonToClient.getInt("sequence");
