@@ -1,4 +1,3 @@
-// set as java application
 apply plugin: 'application'
 
 repositories {
@@ -6,7 +5,6 @@ repositories {
 }
 
 dependencies {
-   // https://mvnrepository.com/artifact/org.json/json
 implementation group: 'org.json', name: 'json', version: '20200518'
 }
 
