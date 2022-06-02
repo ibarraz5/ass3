@@ -515,7 +515,7 @@ public class ServerTCP {
 							byte[] bytesFromClient = NetworkUtility.Receive(in);
 							jsonFromClient = JsonUtility.fromByteArray(bytesFromClient);
 							String guessIt= jsonFromClient.getString("data");
-							if(game.guess(guessIt, key)){
+							if(guessIt.equals(key)){
 								pointsGame= pointsGame+3;
 								winGame=true;
 								break;
