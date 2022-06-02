@@ -2,12 +2,7 @@ package Utilities;
 
 import org.json.JSONObject;
 
-/**
- * JsonUtility.java
- *
- * @author ASU
- * updated  11/3/2021
- */
+
 public class JsonUtility {
 
 	public static JSONObject fromByteArray(byte[] bytes) {
