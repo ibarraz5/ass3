@@ -495,7 +495,7 @@ public class ServerTCP {
 					for (int i = 0; i < 1; i++) {
 						String key = pictureName.get(i);
 
-						for (int j = 1; j < 5; j++) {
+						for (int j = 1; j < 2; j++) {
 
 							String fullFilePath = picturePath.get(i) + "\\" + (pictureName.get(i) + j) + ".png";
 							jsonToClient = ServerResponse.image(fullFilePath);
