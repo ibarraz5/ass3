@@ -5,7 +5,7 @@ repositories {
 }
 
 dependencies {
-implementation group: 'org.json', name: 'json', version: '1'
+implementation group: 'org.json', name: 'json', version: '20200518'
 }
 
 
