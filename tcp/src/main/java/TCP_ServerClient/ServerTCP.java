@@ -195,15 +195,7 @@ public class ServerTCP {
 		 *
 		 * @return true=client won | false=client did not win
 		 */
-		public boolean win() {
-			String answer= pictureName.get(i);
-			if (correctGuess == answer) {
-				timer.cancel();
-				return true;
-			}
 
-			return false;
-		}
 
 		/**
 		 * Gets the picture paths for randomized pictures
@@ -502,6 +494,14 @@ public class ServerTCP {
 								break;
 							}
 						}
+							public boolean win() {
+								if (correctGuess == key) {
+									timer.cancel();
+									return true;
+								}
+
+									return false;
+							}
 
 						if (game.win()) {
 							String fullFilePath = "src/main/resources/images/win.jpg";
