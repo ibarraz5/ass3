@@ -492,7 +492,7 @@ public class ServerTCP {
 				while (game.hasRemainingTime()) {
 
 					// Start with first element in picture path
-					for (int i = 0; i < picturePath.size(); i++) {
+					for (int i = 0; i < 1; i++) {
 						String key = pictureName.get(i);
 
 						for (int j = 1; j < 5; j++) {
