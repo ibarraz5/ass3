@@ -377,6 +377,7 @@ public class ServerTCP {
 		// Initialize variables
 		String name = "";
 		int count = 0;
+		int choice = 0;
 		boolean init = false;
 
 
