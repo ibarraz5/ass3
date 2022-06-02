@@ -520,10 +520,9 @@ public class ServerTCP {
 								winGame=false;
 								break;
 							}
-							if (jsonFromClient.getInt("sequence") == 5 && game.guess(jsonFromClient.getString("data"), key)) {
-								break;
-							}
+
 						}
+						winGame= false;
 
 						if (winGame=true) {
 							String fullFilePath = "src/main/resources/images/win.jpg";
