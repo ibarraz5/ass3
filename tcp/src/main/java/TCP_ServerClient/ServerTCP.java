@@ -426,10 +426,10 @@ public class ServerTCP {
 							case (2) -> {
 								try {
 									count = Integer.parseInt(jsonFromClient.getString("data"));
-									if (count < 1 || count > 6) {
+									if (count < 1 || count > 7) {
 										count = 0;
-										System.out.println("Acceptable range is 1 - 6.");
-										jsonToClient = ServerResponse.error("Acceptable range is 1 - 6.", 2);
+										System.out.println("Acceptable range is 1 - 7.");
+										jsonToClient = ServerResponse.error("Acceptable range is 1 - 7.", 2);
 									}
 									else {
 										jsonToClient = ServerResponse.choiceRequest();
