@@ -246,7 +246,7 @@ public class ServerTCP {
 			JSONObject json = new JSONObject();
 			json.put("sequence", 1);
 			json.put("datatype", "name");
-			json.put("data", "Server->Welcome to Guessing Quotes!  Please submit your name.");
+			json.put("data", "Server-> Welcome to Movie Quotes! Please submit your name.");
 			json.put("image", "");
 			return json;
 		}
@@ -261,7 +261,7 @@ public class ServerTCP {
 			JSONObject json = new JSONObject();
 			json.put("sequence", 2);
 			json.put("datatype", "picture count");
-			json.put("data", "Server->Hello " + clientName + ", how many pictures would you like to attempt to answer.");
+			json.put("data", "Server-> Hello " + clientName + ", how many movie characters to guess?");
 			return json;
 		}
 
@@ -274,7 +274,7 @@ public class ServerTCP {
 			JSONObject json = new JSONObject();
 			json.put("sequence", 3);
 			json.put("datatype", "config");
-			json.put("data", "Server->Type [ready] when your ready to play.");
+			json.put("data", "Server-> Type [ready] when you're ready to play.");
 			return json;
 		}
 
@@ -291,7 +291,7 @@ public class ServerTCP {
 
 			File file = new File(filepath);
 			if (!file.exists()) {
-				System.err.println("Server->Cannot find file: " + file.getAbsolutePath());
+				System.err.println("Server-> Cannot find file: " + file.getAbsolutePath());
 				System.exit(1);
 			}
 			// Read in image
@@ -305,7 +305,7 @@ public class ServerTCP {
 				return json;
 			}
 			catch (Exception e) {
-				return error("Server->Unable to save image to byte array", 4);
+				return error("Server-> Unable to save image to byte array", 4);
 			}
 		}
 
