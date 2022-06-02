@@ -278,6 +278,14 @@ public class ServerTCP {
 			return json;
 		}
 
+		public static JSONObject leaderboardRequest() {
+			JSONObject json = new JSONObject();
+			json.put("sequence", 4);
+			json.put("datatype", "config");
+			json.put("data", "Or");			
+			json.put("data", "Server-> Type [leader board] to display leader board.");
+			return json;
+		}		
 		/**
 		 * Response with image
 		 *
@@ -286,7 +294,7 @@ public class ServerTCP {
 		 */
 		public static JSONObject image(String filepath) throws IOException {
 			JSONObject json = new JSONObject();
-			json.put("sequence", 4);
+			json.put("sequence", 5);
 			json.put("datatype", "image");
 
 			File file = new File(filepath);
@@ -416,6 +424,7 @@ public class ServerTCP {
 									}
 									else {
 										jsonToClient = ServerResponse.readyRequest();
+										jsonToClient = ServerResponse.leaderboardRequest();
 									}
 								}
 								catch (NumberFormatException e) { jsonToClient = ServerResponse.error("Invalid Request", 2);}
@@ -430,6 +439,16 @@ public class ServerTCP {
 									init = true;
 								}
 							}
+							// Leaderboard 
+							case (4) -> {
+								String leaderBoard = jsonFromClient.getString("data");
+								if (!leaderBoard.equalsIgnoreCase("leader board")) {
+									jsonToClient = ServerResponse.error("Type [leader board] for leader board.", 4);
+								}
+								else {
+									init = true;
+								}
+							}								
 							default -> {
 								if (jsonToClient != null) {
 									int seq = jsonToClient.getInt("sequence");
