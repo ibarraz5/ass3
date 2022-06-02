@@ -458,12 +458,15 @@ public class ServerTCP {
 								}
 							}
 							case (4) -> {
+								jsonToClient = ServerResponse.readyRequest();
+							}								
+							case (5) -> {
 								String ready = jsonFromClient.getString("data");
 							        if(ready.equals("ready")){
 									init = true;
 								}
 								else{
-									jsonToClient = ServerResponse.error("Type [ready] when you're ready to play.", 4);									
+									jsonToClient = ServerResponse.error("Type [ready] when you're ready to play.", 5);									
 								}
 							}								
 							default -> {
