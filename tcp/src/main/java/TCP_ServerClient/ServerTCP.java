@@ -328,7 +328,7 @@ public class ServerTCP {
 			JSONObject json = new JSONObject();
 			json.put("sequence", 7);
 			json.put("datatype", "config");		
-			json.put("data", "Server-> Your points scored: " + points);
+			json.put("data", "Server-> Your points scored: " + gamePoints);
 			return json;
 		}		
 
