@@ -18,10 +18,16 @@ For more details see code and/or video
 
 ## Running the example
 
+Running the build.gradle file on the main folder can be done with the following commands:
 `gradle TCPServer`
-
 `gradle TCPClient`
+'gradle UDPServer'
+'gradle UDPClient'
 
+Running the build.gradle file on the individual folders "tcp" and "udp" can be done with:
+cd [folder]/  //folder is either udp or tcp
+`gradle runServer`
+`gradle runClient`
 
 ### Simple protocol
 
