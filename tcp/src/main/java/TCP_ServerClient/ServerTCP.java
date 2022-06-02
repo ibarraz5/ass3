@@ -285,13 +285,14 @@ public class ServerTCP {
 			return json;
 		}
 		
-		static String leaderBoard= "John 5 points";		
+		static String leaderBoard= "John 5 points";	
+		static String readyPlay= " Type [ready] to play.";				
 		
 		public static JSONObject leaderboardDisplay() {
 			JSONObject json = new JSONObject();
 			json.put("sequence", 4);
 			json.put("datatype", "config");		
-			json.put("data", "Server-> Leader Board: " + leaderBoard);
+			json.put("data", "Server-> Leader Board: " + leaderBoard + readyPlay);
 			return json;
 		}			
 		/**
@@ -302,7 +303,7 @@ public class ServerTCP {
 		 */
 		public static JSONObject image(String filepath) throws IOException {
 			JSONObject json = new JSONObject();
-			json.put("sequence", 5);
+			json.put("sequence", 6);
 			json.put("datatype", "image");
 
 			File file = new File(filepath);
@@ -321,7 +322,7 @@ public class ServerTCP {
 				return json;
 			}
 			catch (Exception e) {
-				return error("Server-> Unable to save image to byte array", 4);
+				return error("Server-> Unable to save image to byte array", 6);
 			}
 		}
 
@@ -448,20 +449,14 @@ public class ServerTCP {
 								else{
 									jsonToClient = ServerResponse.error("Type [ready] when you're ready to play.", 3);									
 								}
-							}
+							}							
 							case (4) -> {
-								try{
-									jsonToClient = ServerResponse.readyRequest();
-								}catch (NumberFormatException e) { jsonToClient = ServerResponse.error("Invalid Request", 4);}
-
-							}								
-							case (5) -> {
 								String ready = jsonFromClient.getString("data");
 							        if(ready.equals("ready")){
 									init = true;
 								}
 								else{
-									jsonToClient = ServerResponse.error("Type [ready] when you're ready to play.", 5);									
+									jsonToClient = ServerResponse.error("Type [ready] when you're ready to play.", 4);									
 								}
 							}								
 							default -> {
@@ -493,7 +488,7 @@ public class ServerTCP {
 					for (int i = 0; i < picturePath.size(); i++) {
 						String key = pictureName.get(i);
 
-						for (int j = 1; j < 4; j++) {
+						for (int j = 1; j < 5; j++) {
 
 							String fullFilePath = picturePath.get(i) + "\\" + (pictureName.get(i) + j) + ".png";
 							jsonToClient = ServerResponse.image(fullFilePath);
@@ -502,7 +497,7 @@ public class ServerTCP {
 							byte[] bytesFromClient = NetworkUtility.Receive(in);
 							jsonFromClient = JsonUtility.fromByteArray(bytesFromClient);
 
-							if (jsonFromClient.getInt("sequence") == 4 && game.guess(jsonFromClient.getString("data"), key)) {
+							if (jsonFromClient.getInt("sequence") == 5 && game.guess(jsonFromClient.getString("data"), key)) {
 								break;
 							}
 						}
