@@ -409,7 +409,7 @@ public class ServerTCP {
 
 				JSONObject jsonToClient = null;
 				JSONObject jsonFromClient;
-				JSONObject jsonFromClient2;				
+				JSONObject jsonFromClient2= null;				
 
 				// Initial welcome and name request
 				NetworkUtility.Send(out, JsonUtility.toByteArray(ServerResponse.nameRequest()));
