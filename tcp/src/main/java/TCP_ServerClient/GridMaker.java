@@ -74,7 +74,6 @@ public class GridMaker {
 		for (int r = 0; r < dimension; ++r) {
 			for (int c = 0; c < dimension; ++c) {
 				// crop and output
-				BufferedImage output = cropImage(img, c * cellWidth, r * cellHeight, cellWidth, cellHeight);
 				images.push(oldFilename + "_" + r + "_" + c + ".jpg");
 				path.setFilename(oldFilename + "_" + r + "_" + c);
 				path.setExtension("jpg");
@@ -84,7 +83,6 @@ public class GridMaker {
 		}
 		// finish with useful info
 		System.out.println("Output image dimension: " + new Dimension(img.getWidth(), img.getHeight()));
-		System.out.println("Cell output dimension: " + new Dimension(cellWidth, cellHeight));
 		return images;
 	}
 
