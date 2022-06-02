@@ -292,7 +292,15 @@ public class ServerTCP {
 			json.put("data", "Or");			
 			json.put("data", "Server-> Type [leader board] to display leader board.");
 			return json;
-		}		
+		}	
+		public static JSONObject leaderboardDisplay() {
+			JSONObject json = new JSONObject();
+			json.put("sequence", 6);
+			json.put("datatype", "config");		
+			json.put("data", "Server-> Leader Board: ");
+			json.put("data", "Server-> --------------");			
+			return json;
+		}			
 		/**
 		 * Response with image
 		 *
@@ -448,7 +456,7 @@ public class ServerTCP {
 									init = true;
 								}
 								else{
-									jsonToClient = ServerResponse.error("Type [ready] when your ready to play.", 3);									
+									jsonToClient = ServerResponse.error("Type [ready] when you're ready to play.", 3);									
 								}
 							}
 								
