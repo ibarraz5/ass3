@@ -324,6 +324,13 @@ public class ServerTCP {
 				return error("Server-> Unable to save image to byte array", 6);
 			}
 		}
+		public static JSONObject points(int points) {
+			JSONObject json = new JSONObject();
+			json.put("sequence", 7);
+			json.put("datatype", "config");		
+			json.put("data", "Server-> Your points scored: " + points);
+			return json;
+		}		
 
 		/**
 		 * Response for errors
@@ -518,6 +525,7 @@ public class ServerTCP {
 					jsonToClient = ServerResponse.image(fullFilePath);
 					NetworkUtility.Send(out, JsonUtility.toByteArray(jsonToClient));
 				}
+				jsonToClient = ServerResponse.points(points);	
 			}
 			catch (Exception e) {
 				System.out.println("Client disconnect");
