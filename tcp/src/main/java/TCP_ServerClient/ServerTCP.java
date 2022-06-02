@@ -522,9 +522,8 @@ public class ServerTCP {
 							}
 
 						}
-						winGame= false;
 
-						if (winGame=true) {
+						if (winGame) {
 							String fullFilePath = "src/main/resources/images/win.jpg";
 							jsonToClient = ServerResponse.image(fullFilePath);
 							NetworkUtility.Send(out, JsonUtility.toByteArray(jsonToClient));
