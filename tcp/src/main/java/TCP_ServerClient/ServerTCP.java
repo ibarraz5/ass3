@@ -274,7 +274,7 @@ public class ServerTCP {
 			JSONObject json = new JSONObject();
 			json.put("sequence", 3);
 			json.put("datatype", "config");		
-			json.put("data", "Server-> Type [1] leaderboard or [2] ready to play.");
+			json.put("data", "Server-> Type [leader board] or [ready] to play.");
 			return json;
 		}		
 		public static JSONObject readyRequest() {
