@@ -409,7 +409,8 @@ public class ServerTCP {
 
 				JSONObject jsonToClient = null;
 				JSONObject jsonFromClient;
-				JSONObject jsonFromClient2= null;				
+				JSONObject jsonFromClient2= null;
+				int pointsGame = 0;
 
 				// Initial welcome and name request
 				NetworkUtility.Send(out, JsonUtility.toByteArray(ServerResponse.nameRequest()));
@@ -466,6 +467,15 @@ public class ServerTCP {
 								else{
 									jsonToClient = ServerResponse.error("Type [ready] when you're ready to play.", 4);									
 								}
+							}	
+							case (5) -> {
+								String guess = jsonFromClient.getString("data");
+							        if(guess.equals("Captain America")){
+									pointsGame=pointsGame +3;
+								}
+								else{
+									jsonToClient = ServerResponse.error("Incorrect Answer", 5);									
+								}
 							}								
 							default -> {
 								if (jsonToClient != null) {
@@ -485,7 +495,7 @@ public class ServerTCP {
 				PictureGuessGame game = new PictureGuessGame(name, count);
 				ArrayList<String> picturePath = game.getPicturePath();
 				ArrayList<String> pictureName = game.getAnswerKeys();
-				int points = 0;
+				int pointsGame = 0;
 
 				// Start game timer
 				game.startTimer();
@@ -507,7 +517,7 @@ public class ServerTCP {
 							jsonFromClient = JsonUtility.fromByteArray(bytesFromClient);
 							String guessIt= jsonFromClient2.getString("data");
 							if(game.guess(guessIt, key)){
-								points= points+3;
+								pointsGame= pointsGame+3;
 								winGame=true;
 								break;
 							}
