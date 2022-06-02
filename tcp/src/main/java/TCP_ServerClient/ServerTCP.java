@@ -297,8 +297,7 @@ public class ServerTCP {
 			JSONObject json = new JSONObject();
 			json.put("sequence", 6);
 			json.put("datatype", "config");		
-			json.put("data", "Server-> Leader Board: ");
-			json.put("data", "Server-> --------------");			
+			json.put("data", "Server-> Leader Board: /n ----------- ");
 			return json;
 		}			
 		/**
@@ -445,11 +444,12 @@ public class ServerTCP {
 								catch (NumberFormatException e) { jsonToClient = ServerResponse.error("Invalid Request", 2);}
 							}
 							
-							// Ready
+							// Choice   
 							case (3) -> {
 								String choice = jsonFromClient.getString("data");
 								if(choice.equals("leader board")){
-										jsonToClient = ServerResponse.leaderboardDisplay();									
+										jsonToClient = ServerResponse.leaderboardDisplay();
+										jsonToClient = ServerResponse.readyRequest();																		
 								}else if(choice.equals("ready")){
 									init = true;
 								}
@@ -457,7 +457,15 @@ public class ServerTCP {
 									jsonToClient = ServerResponse.error("Type [ready] when you're ready to play.", 3);									
 								}
 							}
-								
+							case (4) -> {
+								String ready = jsonFromClient.getString("data");
+							        if(choice.equals("ready")){
+									init = true;
+								}
+								else{
+									jsonToClient = ServerResponse.error("Type [ready] when you're ready to play.", 4);									
+								}
+							}								
 							default -> {
 								if (jsonToClient != null) {
 									int seq = jsonToClient.getInt("sequence");
