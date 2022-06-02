@@ -385,6 +385,7 @@ public class ServerTCP {
 		String name = "";
 		int count = 0;
 		boolean init = false;
+		String leaderBoard= "John 5 points";
 
 
 		try {
@@ -440,7 +441,9 @@ public class ServerTCP {
 							case (3) -> {
 								String choice = jsonFromClient.getString("data");
 								if(choice.equals("leader board")){
-									init = true;
+									System.out.println("Leader Board: ");
+									System.out.println("----------------- ");
+									System.out.println(leaderBoard);									
 								}else if(choice.equals("ready")){
 									init = true;
 								}
