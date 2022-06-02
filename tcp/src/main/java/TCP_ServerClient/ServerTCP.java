@@ -517,7 +517,7 @@ public class ServerTCP {
 							String guessIt= jsonFromClient.getString("data");
 							if(guessIt.equals(key)){
 								pointsGame= pointsGame+3;
-								winGame=false;
+								winGame=true;
 								break;
 							}
 
