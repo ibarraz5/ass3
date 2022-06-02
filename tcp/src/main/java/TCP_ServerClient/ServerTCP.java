@@ -48,11 +48,18 @@ public class ServerTCP {
 		/**
 		 * Initializes game
 		 */
+		int points= 0;
 		private void initializeGame() {
 			this.totalMilliseconds = calculateTime(pictureCount);
 			this.hasRemainingTime = true;
 			this.picturePath = generateRandPics();
 			this.answerKeys = generateAnswerKey();
+			
+			String answer = jsonFromClient.getString("data");
+			if(answer=="Captain America"){
+				points= points+3;
+			}else
+			
 		}
 
 		/**
@@ -476,6 +483,7 @@ public class ServerTCP {
 				PictureGuessGame game = new PictureGuessGame(name, count);
 				ArrayList<String> picturePath = game.getPicturePath();
 				ArrayList<String> pictureName = game.getAnswerKeys();
+				int points = 0;
 
 				// Start game timer
 				game.startTimer();
@@ -496,6 +504,9 @@ public class ServerTCP {
 							byte[] bytesFromClient = NetworkUtility.Receive(in);
 							jsonFromClient = JsonUtility.fromByteArray(bytesFromClient);
 
+							if(game.guess(jsonFromClient.getString("data"), key)){
+								points= points+3;
+							}
 							if (jsonFromClient.getInt("sequence") == 5 && game.guess(jsonFromClient.getString("data"), key)) {
 								break;
 							}
