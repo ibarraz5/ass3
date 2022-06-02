@@ -449,14 +449,19 @@ public class ServerTCP {
 									jsonToClient = ServerResponse.error("Type [ready] when you're ready to play.", 3);									
 								}
 							}
-							NetworkUtility.Send(out, JsonUtility.toByteArray(ServerResponse.readyRequest()));													
 							case (4) -> {
+								try{
+									jsonToClient = ServerResponse.readyRequest();
+								}catch (NumberFormatException e) { jsonToClient = ServerResponse.error("Invalid Request", 4);}
+
+							}								
+							case (5) -> {
 								String ready = jsonFromClient.getString("data");
 							        if(ready.equals("ready")){
 									init = true;
 								}
 								else{
-									jsonToClient = ServerResponse.error("Type [ready] when you're ready to play.", 4);									
+									jsonToClient = ServerResponse.error("Type [ready] when you're ready to play.", 5);									
 								}
 							}								
 							default -> {
