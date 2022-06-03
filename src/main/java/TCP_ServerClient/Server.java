@@ -48,7 +48,7 @@ public class Server {
 			
 			while(true) {
 				try {
-					System.out.println("WAITING FOR CONNECTIONS...");
+					System.out.println("Server waiting for client to connect...");
 					Socket clientSocket = serverSocket.accept();
 					
 					// create an input stream to receive data
@@ -62,17 +62,17 @@ public class Server {
 					System.out.println("SERVER CONNECTED TO CLIENT!");
 					
 					JSONsend(toClient, JSONtext("Connection established."));
-					JSONsend(toClient, JSONtext("Welcome to 'Who's That Pokémon!'"));
-					JSONsend(toClient, JSONimage("pokemon-default.jpg")); // send image 'Who's That Pokémon!'
+					JSONsend(toClient, JSONtext("Server-> Welcome to Movie Quotes!"));
+					JSONsend(toClient, JSONimage("movies-default.jpg")); 
 					
 					JSONObject clientName = questionManage(toClient, fromClient, JSONquestion("What is your name?"), "NONE");
 					cName = clientName.getString("data");
 					
-					JSONsend(toClient, JSONtext(cName + "! How many Pokémon would you like to find?"));
+					JSONsend(toClient, JSONtext(cName + "! How many movies quotes would you like to guess?"));
 					JSONObject clientQ = questionManage(toClient, fromClient, JSONquestion("Enter a number."), "NUMERIC");
 					numQuestions = Integer.parseInt((clientQ.getString("data")));
 					
-					JSONsend(toClient, JSONtext(cName + ", you will have to find " + numQuestions + " Pokémon!"));
+					JSONsend(toClient, JSONtext(cName + ", you will have to guess " + numQuestions + " quotes!"));
 					
 					// new thread for this client's match
 					numMatches++;
@@ -97,34 +97,30 @@ public class Server {
 		}
 	}
 	
-	/**
-	 * Match: nested class that Server uses to deal with a 'Who's that Pokemon?' match
-	 */
+
 	static class Match implements Runnable {
 		/**
 		 * Pokemon: nested class to be used in a match.
 		 *
 		 */
 		private static class Pokemon {
-			/**
-			 * Pokemon properties
-			 */
+
 			private String name;
 			private String image;
 			private int number;
 			public enum names {
-				MEW, BULBASAUR, BLASTOISE, PIKACHU, NINETALES, DIGLETT, MEOWTH, PSYDUCK, ARCANINE,
-				ABRA, PONYTA, GASTLY, GENGAR, RHYDON, SCYTHER, GYARADOS, EEVEE, SNORLAX, MEWTWO
+				WOLVERINE, DARTHVADER, TONYSTARK, CAPTAINAMERICA, JOKER, HOMERSIMPSON, 
+				JACKSPARROW
 			}
 			
 			public Pokemon(String name, int num) {
 				this.name = name;
 				this.number = num;
-				this.image = "pokemon-" + number + ".jpg";
+				this.image = "character-" + number + ".jpg";
 			}
 			
 			public static Pokemon[] allPokes() {
-				Pokemon[] pokeArray = new Pokemon[19];
+				Pokemon[] pokeArray = new Pokemon[7];
 				for (names p: names.values()) {
 					pokeArray[p.ordinal()] = new Pokemon(p.toString(), p.ordinal());
 					// System.out.println("This pokemon is " + pokeArray[p.ordinal()].name + pokeArray[p.ordinal()].number);
@@ -152,7 +148,7 @@ public class Server {
 		private int time;
 		Pokemon[] allPokemon;
 		Pokemon[] questionPokemon;
-		private int totalPokemon = 19;
+		private int totalPokemon = 7;
 		
 		/**
 		 * Match's constructor creates a new match with a socket
@@ -175,7 +171,7 @@ public class Server {
 			try {
 				
 				JSONsend(toClient, JSONtext("You will have " + time + " seconds to answer!"));
-				JSONsend(toClient, JSONtext("Randomizing pokemon..."));
+				JSONsend(toClient, JSONtext("Randomizing character..."));
 				
 				allPokemon = Pokemon.allPokes();
 				questionPokemon = new Pokemon[numQuestions]; 
@@ -185,9 +181,9 @@ public class Server {
 					questionPokemon[i] = allPokemon[randomizer.nextInt(totalPokemon)];
 				}
 				
-				JSONsend(toClient, JSONtext(clientName + ", type 'START' to begin match!"));
+				JSONsend(toClient, JSONtext(clientName + ", type 'START' to begin game!"));
 				questionManage(toClient, fromClient, JSONquestion("Would you like to start?"), "START");
-				JSONsend(toClient, JSONtext("Find " + numQuestions + " Pokemon!"));
+				JSONsend(toClient, JSONtext("Guess " + numQuestions + " quotes!"));
 				
 				Calendar cal = Calendar.getInstance();
 		        Date startTime = cal.getTime();
@@ -202,7 +198,7 @@ public class Server {
 					JSONsend(toClient, JSONimage(questionPokemon[i].getImage()));
 					
 					System.out.println(questionPokemon[i].getName());
-					questionManage(toClient, fromClient, JSONquestion("Who's That Pokémon!?"), questionPokemon[i].getName());
+					questionManage(toClient, fromClient, JSONquestion("Who's That Character's Quote?"), questionPokemon[i].getName());
 					
 					correctAnswers++; JSONsend(toClient, JSONtext("Number of correct answers: " + correctAnswers));
 					cal2 =  Calendar.getInstance();
@@ -211,14 +207,14 @@ public class Server {
 					JSONsend(toClient, JSONtext("Time to Finish: " + finishTime));
 					if (currentTime.after(finishTime)) {
 						JSONsend(toClient, JSONtext("TIMES UP! Sorry, you lost!"));
-						JSONsend(toClient, JSONimage("failure.jpg"));
+						JSONsend(toClient, JSONimage("lose.jpg"));
 						break;
 					}
 				}
 				
 				if (correctAnswers == numQuestions) {
-					JSONsend(toClient, JSONimage("success.jpg")); // send success image
-					JSONsend(toClient, JSONtext("CONGRATULATIONS! You're a Pokémon master!"));
+					JSONsend(toClient, JSONimage("win.jpg")); // send success image
+					JSONsend(toClient, JSONtext("CONGRATULATIONS! You're a Winner!"));
 				}
 				
 				JSONsend(toClient, JSONtext("Press the [X] button to finish."));
