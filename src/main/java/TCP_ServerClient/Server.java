@@ -211,9 +211,10 @@ public class Server {
 						JSONsend(toClient, JSONimage("lose.jpg"));
 						break;
 					}
-				}
 				String characterName= questionPokemon[i].getName();
-				take(characterName);
+				take(characterName);					
+				}
+
 				
 				if (correctAnswers == numQuestions) {
 					JSONsend(toClient, JSONimage("win.jpg")); // send success image
