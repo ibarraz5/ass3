@@ -341,7 +341,7 @@ public class Server {
 				clientJson = JSONreceive(in);
 				answer = clientJson.getString("data");
 				check = answer.equalsIgnoreCase(expected);
-				JSONsend(out, JSONimage("character-"+run.questionPokemon(i)+"-"+next+".jpg"));
+				JSONsend(out, JSONimage("character-"+questionPokemon[i].getName()+"-"+next+".jpg"));
 				next++;
 			}
 			JSONsend(out, JSONtext("CORRECT! It's " + expected + "!"));
