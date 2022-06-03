@@ -116,7 +116,7 @@ public class Server {
 			public Pokemon(String name, int num) {
 				this.name = name;
 				this.number = num;
-				this.image = "pokemon-" + number + ".jpg";
+				this.image = "character-" + number + ".jpg";
 			}
 			
 			public static Pokemon[] allPokes() {
