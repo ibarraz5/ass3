@@ -1,4 +1,4 @@
-package whosThatPokemon;
+package TCP_ServerClient;
 
 import java.io.*;
 import java.net.*;
