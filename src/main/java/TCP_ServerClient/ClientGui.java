@@ -1,4 +1,4 @@
-package whosThatPokemon;
+package TCP_ServerClient;
 
 import javafx.application.Application;
 import javafx.event.EventHandler;
