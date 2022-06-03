@@ -334,13 +334,15 @@ public class Server {
 		} else {
 			String answer = clientJson.getString("data");
 			Boolean check = answer.equalsIgnoreCase(expected);
+			int next = 1;
 			while(check == false) {
 				JSONsend(out, JSONtext("Wrong answer! Please try again."));
 				JSONsend(out, jsonQuestion);
 				clientJson = JSONreceive(in);
 				answer = clientJson.getString("data");
 				check = answer.equalsIgnoreCase(expected);
-				JSONsend(toClient, JSONimage("character-"+Pokemon.number()+"-"+next+".jpg"));
+				JSONsend(out, JSONimage("character-"+run.questionPokemon(i)+"-"+next+".jpg"));
+				next++;
 			}
 			JSONsend(out, JSONtext("CORRECT! It's " + expected + "!"));
 			return clientJson;
