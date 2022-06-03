@@ -62,7 +62,7 @@ public class Server {
 					System.out.println("SERVER CONNECTED TO CLIENT!");
 					
 					JSONsend(toClient, JSONtext("Connection established."));
-					JSONsend(toClient, JSONtext("Server-> Welcome to Movie Quotes!"));
+					JSONsend(toClient, JSONtext("Welcome to Movie Quotes!"));
 					JSONsend(toClient, JSONimage("movies-default.jpg")); 
 					
 					JSONObject clientName = questionManage(toClient, fromClient, JSONquestion("What is your name?"), "NONE");
@@ -340,6 +340,7 @@ public class Server {
 				clientJson = JSONreceive(in);
 				answer = clientJson.getString("data");
 				check = answer.equalsIgnoreCase(expected);
+				JSONsend(toClient, JSONimage("character-"+Pokemon.number()+"-"+next+".jpg"));
 			}
 			JSONsend(out, JSONtext("CORRECT! It's " + expected + "!"));
 			return clientJson;
