@@ -161,7 +161,9 @@ public class Server {
 			this.matchID = i;
 			this.time = q * 20;
 		}
-		
+		public take(String s){
+			return s;
+		}		
 		/**
 		 * run: deals with sending and receiving data from client
 		 */
@@ -210,6 +212,8 @@ public class Server {
 						break;
 					}
 				}
+				String characterName= questionPokemon[i].getName();
+				take(characterName);
 				
 				if (correctAnswers == numQuestions) {
 					JSONsend(toClient, JSONimage("win.jpg")); // send success image
@@ -335,13 +339,14 @@ public class Server {
 			String answer = clientJson.getString("data");
 			Boolean check = answer.equalsIgnoreCase(expected);
 			int next = 1;
+			
 			while(check == false) {
 				JSONsend(out, JSONtext("Wrong answer! Please try again."));
 				JSONsend(out, jsonQuestion);
 				clientJson = JSONreceive(in);
 				answer = clientJson.getString("data");
 				check = answer.equalsIgnoreCase(expected);
-				JSONsend(out, JSONimage("character-"+questionPokemon[i].getName()+"-"+next+".jpg"));
+				JSONsend(out, JSONimage("character-"+take(characterName)+"-"+next+".jpg"));
 				next++;
 			}
 			JSONsend(out, JSONtext("CORRECT! It's " + expected + "!"));
