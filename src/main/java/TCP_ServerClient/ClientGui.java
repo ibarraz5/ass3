@@ -38,7 +38,7 @@ public class ClientGui extends Application {
 	 * ClientGui class properties:
 	 * 
 	 */
-	private static String stageTitle = "Who's that pokemon?";
+	private static String stageTitle = "Guess the Character Quote?";
 	private static Image defImage;
 	private static ImageView imageSection;
 	private static TextField answerField = new TextField();
