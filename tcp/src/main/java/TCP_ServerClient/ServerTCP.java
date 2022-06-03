@@ -512,12 +512,12 @@ public class ServerTCP {
 							jsonToClient = ServerResponse.image(fullFilePath);
 							NetworkUtility.Send(out, JsonUtility.toByteArray(jsonToClient));
 
-							byte[] bytesFromClient = NetworkUtility.Receive(in);
+							byte[] bytesFromClient = NetworkUtility.Receive(in);	
+							jsonFromClient = JsonUtility.fromByteArray(bytesFromClient);
 							if (jsonFromClient.has("sequence")) {
 							int sequence = jsonFromClient.getInt("sequence");	
 							switch (sequence) {
 								case(1) -> {
-							jsonFromClient = JsonUtility.fromByteArray(bytesFromClient);
 							String guessIt= jsonFromClient.getString("data");
 							if(guessIt.equals(key)){
 								pointsGame= pointsGame+3;
