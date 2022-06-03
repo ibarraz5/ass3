@@ -461,7 +461,9 @@ public class ServerTCP {
 							}							
 							case (4) -> {
 								String ready = jsonFromClient.getString("data");
+								if(choice.equals("ready")){
 									init = true;
+								}
 								else{
 									jsonToClient = ServerResponse.error("Type [ready] when you're ready to play.", 4);									
 								}
@@ -544,6 +546,7 @@ public class ServerTCP {
 				jsonToClient = ServerResponse.points(pointsGame);
 				NetworkUtility.Send(out, JsonUtility.toByteArray(jsonToClient));				
 			}
+			}	
 			catch (Exception e) {
 				System.out.println("Client disconnect");
 			}
