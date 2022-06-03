@@ -161,7 +161,7 @@ public class Server {
 			this.matchID = i;
 			this.time = q * 20;
 		}
-		public take(String s){
+		public String take(String s){
 			return s;
 		}		
 		/**
