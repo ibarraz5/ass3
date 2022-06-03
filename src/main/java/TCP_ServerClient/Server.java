@@ -116,14 +116,13 @@ public class Server {
 			public Pokemon(String name, int num) {
 				this.name = name;
 				this.number = num;
-				this.image = "character-" + number + ".jpg";
+				this.image = "pokemon-" + number + ".jpg";
 			}
 			
 			public static Pokemon[] allPokes() {
 				Pokemon[] pokeArray = new Pokemon[7];
 				for (names p: names.values()) {
 					pokeArray[p.ordinal()] = new Pokemon(p.toString(), p.ordinal());
-					// System.out.println("This pokemon is " + pokeArray[p.ordinal()].name + pokeArray[p.ordinal()].number);
 				}
 				return pokeArray;
 			}
@@ -330,7 +329,7 @@ public class Server {
 				answer = clientJson.getString("data");
 				check = answer.equalsIgnoreCase(expected);
 			}
-			JSONsend(out, JSONtext("MATCH START!"));
+			JSONsend(out, JSONtext("GAME START!"));
 			return clientJson;
 		} else {
 			String answer = clientJson.getString("data");
