@@ -228,7 +228,7 @@ public class Server {
 			}
 		}
 	}
-		public String take(String s){
+		public static String take(String s){
 			return s;
 		}		
 	
