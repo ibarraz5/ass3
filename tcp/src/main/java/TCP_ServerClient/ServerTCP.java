@@ -461,7 +461,7 @@ public class ServerTCP {
 							}							
 							case (4) -> {
 								String ready = jsonFromClient.getString("data");
-								if(choice.equals("ready")){
+								if(ready.equals("ready")){
 									init = true;
 								}
 								else{
@@ -530,12 +530,12 @@ public class ServerTCP {
 						}
 
 						if (winGame) {
-							String fullFilePath = "src/main/resources/images/win.jpg";
-							jsonToClient = ServerResponse.image(fullFilePath);
+							String winPath = "src/main/resources/images/win.jpg";
+							jsonToClient = ServerResponse.image(winPath);
 							NetworkUtility.Send(out, JsonUtility.toByteArray(jsonToClient));
 						}else {
-							String fullFilePath = "src/main/resources/images/lose.jpg";							
-							jsonToClient = ServerResponse.image(fullFilePath);
+							String losePath = "src/main/resources/images/lose.jpg";							
+							jsonToClient = ServerResponse.image(losePath);
 							NetworkUtility.Send(out, JsonUtility.toByteArray(jsonToClient));							
 						}
 						jsonToClient = ServerResponse.points(pointsGame);
