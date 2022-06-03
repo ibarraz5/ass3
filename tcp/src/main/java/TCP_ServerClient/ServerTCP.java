@@ -523,6 +523,7 @@ public class ServerTCP {
 								break;
 							}
 							}
+							}
 
 						}
 
