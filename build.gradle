@@ -28,7 +28,7 @@ task runServer(type: JavaExec) {
 	
 	classpath = sourceSets.main.runtimeClasspath
 	
-	main = 'whosThatPokemon.Server'
+	main = 'TCP_ServerClient.Server'
 	
 	// run with one or no arguments e.g.: gradle runServer -Pport=8050
 	if (project.hasProperty('port')) {
@@ -42,7 +42,7 @@ task runClient(type: JavaExec) {
 
   classpath = sourceSets.main.runtimeClasspath
 
-  main = 'whosThatPokemon.Client'
+  main = 'TCP_ServerClient.Client'
   standardInput = System.in
   
   // run with arguments e.g.: gradle runClient -Phost=localhost -Pport=8000
