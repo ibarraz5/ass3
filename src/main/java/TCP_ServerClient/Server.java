@@ -161,9 +161,7 @@ public class Server {
 			this.matchID = i;
 			this.time = q * 20;
 		}
-		public String take(String s){
-			return s;
-		}		
+	
 		/**
 		 * run: deals with sending and receiving data from client
 		 */
@@ -230,6 +228,9 @@ public class Server {
 			}
 		}
 	}
+		public String take(String s){
+			return s;
+		}		
 	
 	public static JSONObject JSONerror(String err) {
 		JSONObject json = new JSONObject();
