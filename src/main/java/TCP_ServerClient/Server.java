@@ -111,8 +111,8 @@ public class Server {
 			private String image;
 			private int number;
 			public enum names {
-				WOLVERINE, DARTHVADER, TONYSTARK, CAPTAINAMERICA, JOKER, HOMERSIMPSON, 
-				JACKSPARROW
+				WOLVERINE, BATMAN, IRONMAN, SUPERMAN, JOKER, THANOS, 
+				THOR
 			}
 			
 			public Pokemon(String name, int num) {
