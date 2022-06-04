@@ -102,10 +102,10 @@ public class Server {
 
 	static class Match implements Runnable {
 		/**
-		 * Pokemon: nested class to be used in a match.
+		 * Quotes: nested class to be used in a match.
 		 *
 		 */
-		private static class Pokemon {
+		private static class Quotes {
 
 			private String name;
 			private String image;
@@ -115,18 +115,18 @@ public class Server {
 				THOR
 			}
 			
-			public Pokemon(String name, int num) {
+			public Quotes(String name, int num) {
 				this.name = name;
 				this.number = num;
 				this.image = "character-" + number + ".jpg";
 			}
 			
-			public static Pokemon[] allPokes() {
-				Pokemon[] pokeArray = new Pokemon[7];
+			public static Quotes[] allQuotess() {
+				Quotes[] QuotesArray = new Quotes[7];
 				for (names p: names.values()) {
-					pokeArray[p.ordinal()] = new Pokemon(p.toString(), p.ordinal());
+					QuotesArray[p.ordinal()] = new Quotes(p.toString(), p.ordinal());
 				}
-				return pokeArray;
+				return QuotesArray;
 			}
 			
 			public String getName() {
@@ -147,9 +147,9 @@ public class Server {
 		private int numQuestions;
 		private int matchID;
 		private int time;
-		Pokemon[] allPokemon;
-		Pokemon[] questionPokemon;
-		private int totalPokemon = 7;
+		Quotes[] allQuotes;
+		Quotes[] questionQuotes;
+		private int totalQuotes = 7;
 		
 		/**
 		 * Match's constructor creates a new match with a socket
@@ -174,12 +174,12 @@ public class Server {
 				JSONsend(toClient, JSONtext("You will have " + time + " seconds to answer!"));
 				JSONsend(toClient, JSONtext("Randomizing character..."));
 				
-				allPokemon = Pokemon.allPokes();
-				questionPokemon = new Pokemon[numQuestions]; 
+				allQuotes = Quotes.allQuotess();
+				questionQuotes = new Quotes[numQuestions]; 
 				
 				Random randomizer = new Random();
 				for (int i = 0; i < numQuestions; i++) {
-					questionPokemon[i] = allPokemon[randomizer.nextInt(totalPokemon)];
+					questionQuotes[i] = allQuotes[randomizer.nextInt(totalQuotes)];
 					int characterNum= i;
 				}
 				
@@ -197,10 +197,10 @@ public class Server {
 				
 				for (int i = 0; i < numQuestions; i++) {
 					
-					JSONsend(toClient, JSONimage(questionPokemon[i].getImage()));
+					JSONsend(toClient, JSONimage(questionQuotes[i].getImage()));
 					
-					System.out.println(questionPokemon[i].getName());
-					questionManage(toClient, fromClient, JSONquestion("Who's That Character's Quote?"), questionPokemon[i].getName());
+					System.out.println(questionQuotes[i].getName());
+					questionManage(toClient, fromClient, JSONquestion("Who's That Character's Quote?"), questionQuotes[i].getName());
 					
 					correctAnswers++; JSONsend(toClient, JSONtext("Number of correct answers: " + correctAnswers));
 					cal2 =  Calendar.getInstance();
@@ -370,3 +370,4 @@ public class Server {
 	}
 	
 }
+
