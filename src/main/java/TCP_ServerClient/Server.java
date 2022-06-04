@@ -341,7 +341,7 @@ public class Server {
 			String answer = clientJson.getString("data");
 			Boolean check = answer.equalsIgnoreCase(expected);
 			int next = 1;
-			int n=0;
+			int c=0;
 			
 			while(check == false) {
 				JSONsend(out, JSONtext("Wrong answer! Please try again."));
@@ -349,8 +349,8 @@ public class Server {
 				clientJson = JSONreceive(in);
 				answer = clientJson.getString("data");
 				check = answer.equalsIgnoreCase(expected);
-				JSONsend(out, JSONimage("character-"+character+"-"+characterNum+".jpg"));
-				characterNum++;
+				JSONsend(out, JSONimage("character-"+c+"-"+next+".jpg"));
+				next++;
 			}
 			JSONsend(out, JSONtext("CORRECT! It's " + expected + "!"));
 			return clientJson;
