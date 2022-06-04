@@ -122,7 +122,7 @@ public class Server {
 				this.image = "character-" + number + ".jpg";
 			}
 			
-			public static Quotes[] allQuotess() {
+			public static Quotes[] allQuotes() {
 				Quotes[] QuotesArray = new Quotes[7];
 				for (names p: names.values()) {
 					QuotesArray[p.ordinal()] = new Quotes(p.toString(), p.ordinal());
@@ -175,13 +175,10 @@ public class Server {
 				JSONsend(toClient, JSONtext("You will have " + time + " seconds to answer!"));
 				JSONsend(toClient, JSONtext("Getting character..."));
 				
-				allQuotes = Quotes.allQuotess();
+				allQuotes = Quotes.allQuotes();
 				questionQuotes = new Quotes[numQuestions]; 
 				
-				Random randomizer = new Random();
-				for (int i = 0; i < numQuestions; i++) {
-					questionQuotes[i];
-				}
+
 				
 				JSONsend(toClient, JSONtext(clientName + ", type 'START' to begin game!"));
 				questionManage(toClient, fromClient, JSONquestion("Would you like to start?"), "START");
