@@ -16,7 +16,8 @@ import java.util.Random;
  */
 public class Server {
 	
-	static int characterNum=0;
+	static int characterNum=1;
+	static int character=1;
 	
 	public static Boolean clientOn;
 	
@@ -172,15 +173,14 @@ public class Server {
 			try {
 				
 				JSONsend(toClient, JSONtext("You will have " + time + " seconds to answer!"));
-				JSONsend(toClient, JSONtext("Randomizing character..."));
+				JSONsend(toClient, JSONtext("Getting character..."));
 				
 				allQuotes = Quotes.allQuotess();
 				questionQuotes = new Quotes[numQuestions]; 
 				
 				Random randomizer = new Random();
 				for (int i = 0; i < numQuestions; i++) {
-					questionQuotes[i] = allQuotes[randomizer.nextInt(totalQuotes)];
-					int characterNum= i;
+					questionQuotes[i] = allQuotes[nextInt(totalQuotes)];
 				}
 				
 				JSONsend(toClient, JSONtext(clientName + ", type 'START' to begin game!"));
@@ -351,8 +351,8 @@ public class Server {
 				clientJson = JSONreceive(in);
 				answer = clientJson.getString("data");
 				check = answer.equalsIgnoreCase(expected);
-				JSONsend(out, JSONimage("character-"+characterNum+"-"+next+".jpg"));
-				next++;
+				JSONsend(out, JSONimage("character-"+character+"-"+characterNum+".jpg"));
+				characterNum++;
 			}
 			JSONsend(out, JSONtext("CORRECT! It's " + expected + "!"));
 			return clientJson;
