@@ -49,16 +49,16 @@ public class ClientGui extends Application {
 	private static int stageSizeY = 800;
 	
 	/**
-	 * start: shows the main stage of Who's that pokemon?
+	 * start: shows the main stage of Who's that quotes?
 	 */
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 		
-		Stage pokemonStage = new Stage();
-        pokemonStage.setTitle(stageTitle);
-        pokemonStage.setResizable(false);
+		Stage quotesStage = new Stage();
+        quotesStage.setTitle(stageTitle);
+        quotesStage.setResizable(false);
         
-        //Setup 'Who's that Pokemon?' picture
+        //Setup 'Who's that quotes?' picture
         imageSection = new ImageView(); // new image view
         // setNewImage(null);
         imageSection.setPreserveRatio(true); // preserve ratio of the image
@@ -87,17 +87,17 @@ public class ClientGui extends Application {
         GameArea.setCenter(inputPane);
       	GameArea.setBottom(outputArea);
         
-        Scene pokemonScene = new Scene(GameArea, stageSizeX, stageSizeY);
-        pokemonStage.setScene(pokemonScene);
+        Scene quotesScene = new Scene(GameArea, stageSizeX, stageSizeY);
+        quotesStage.setScene(quotesScene);
         
         Client.setRunning(true); // tell client logic that GUI is ready
-        pokemonStage.show();
+        quotesStage.show();
         
-        pokemonStage.setOnCloseRequest((EventHandler<WindowEvent>) new EventHandler<WindowEvent>() {
+        quotesStage.setOnCloseRequest((EventHandler<WindowEvent>) new EventHandler<WindowEvent>() {
             public void handle(WindowEvent we) {
                 System.out.println("Stage is closing");
                 Client.setRunning(false);
-                pokemonStage.close();
+                quotesStage.close();
                 System.exit(0);
             }
         });
@@ -192,3 +192,4 @@ public class ClientGui extends Application {
 		}
 	}
 }
+
