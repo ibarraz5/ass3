@@ -18,6 +18,8 @@ public class Server {
 	
 	static int characterNum=1;
 	static int character=1;
+	static Random randomizer = new Random();
+
 	
 	public static Boolean clientOn;
 	
@@ -176,8 +178,12 @@ public class Server {
 				JSONsend(toClient, JSONtext("Getting character..."));
 				
 				allQuotes = Quotes.allQuotes();
-				questionQuotes[0] = new Quotes("WOLVERINE",0); 
-				int n=0;
+				questionQuotes = new Quotes[numQuestions]; 
+				
+				for (int i = 0; i < numQuestions; i++) {
+					questionQuotes[i] = allQuotes[randomizer.nextInt(totalQuotes)];
+					int characterNum= i;
+				}
 
 				
 				
