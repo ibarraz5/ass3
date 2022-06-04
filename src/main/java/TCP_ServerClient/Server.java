@@ -16,7 +16,7 @@ import java.util.Random;
  */
 public class Server {
 	
-	int characterNum=0;
+	static int characterNum=0;
 	
 	public static Boolean clientOn;
 	
