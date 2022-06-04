@@ -149,7 +149,7 @@ public class Server {
 		private int matchID;
 		private int time;
 		Quotes[] allQuotes;
-		Quotes[] questionQuotes= new Quotes[]{ 0,1,2,3,4,5,6 };
+		Quotes[] questionQuotes};
 		private int totalQuotes = 7;
 		
 		/**
@@ -176,7 +176,7 @@ public class Server {
 				JSONsend(toClient, JSONtext("Getting character..."));
 				
 				allQuotes = Quotes.allQuotes();
-				questionQuotes = new Quotes[numQuestions]; 
+				questionQuotes[0] = new Quotes("WOLVERINE",0}; 
 				int n=0;
 
 				
