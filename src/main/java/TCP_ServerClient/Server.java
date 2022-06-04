@@ -178,7 +178,7 @@ public class Server {
 				allQuotes = Quotes.allQuotes();
 				questionQuotes = new Quotes[numQuestions]; 
 				int n=0;
-					questionQuotes[n] = allQuotes[numQuestions];
+					questionQuotes = {0,1,2,3,4,5,6};
 				
 				
 				JSONsend(toClient, JSONtext(clientName + ", type 'START' to begin game!"));
