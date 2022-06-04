@@ -176,7 +176,7 @@ public class Server {
 				JSONsend(toClient, JSONtext("Getting character..."));
 				
 				allQuotes = Quotes.allQuotes();
-				questionQuotes[0] = new Quotes("WOLVERINE",0}; 
+				questionQuotes[0] = new Quotes("WOLVERINE",0); 
 				int n=0;
 
 				
