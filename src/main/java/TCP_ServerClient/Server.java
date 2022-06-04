@@ -180,7 +180,7 @@ public class Server {
 				
 				Random randomizer = new Random();
 				for (int i = 0; i < numQuestions; i++) {
-					questionQuotes[i] = allQuotes[totalQuotes];
+					questionQuotes[i];
 				}
 				
 				JSONsend(toClient, JSONtext(clientName + ", type 'START' to begin game!"));
