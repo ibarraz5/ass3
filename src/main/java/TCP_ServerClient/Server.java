@@ -17,8 +17,8 @@ import java.util.Random;
 public class Server {
 	
 	static int characterNum=1;
-	static int character=1;
 	static Random randomizer = new Random();
+	static int character= randomizer.nextInt(7);
 
 	
 	public static Boolean clientOn;
@@ -355,7 +355,7 @@ public class Server {
 				clientJson = JSONreceive(in);
 				answer = clientJson.getString("data");
 				check = answer.equalsIgnoreCase(expected);
-				JSONsend(out, JSONimage("character-"+c+"-"+next+".jpg"));
+				JSONsend(out, JSONimage("character-"+character+"-"+next+".jpg"));
 				next++;
 			}
 			JSONsend(out, JSONtext("CORRECT! It's " + expected + "!"));
