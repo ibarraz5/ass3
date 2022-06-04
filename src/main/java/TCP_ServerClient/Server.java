@@ -149,7 +149,7 @@ public class Server {
 		private int matchID;
 		private int time;
 		Quotes[] allQuotes;
-		Quotes[] questionQuotes};
+		Quotes[] questionQuotes;
 		private int totalQuotes = 7;
 		
 		/**
