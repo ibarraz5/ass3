@@ -16,6 +16,8 @@ import java.util.Random;
  */
 public class Server {
 	
+	int characterNum=0;
+	
 	public static Boolean clientOn;
 	
 	public static void main (String args[]) {
@@ -178,6 +180,7 @@ public class Server {
 				Random randomizer = new Random();
 				for (int i = 0; i < numQuestions; i++) {
 					questionPokemon[i] = allPokemon[randomizer.nextInt(totalPokemon)];
+					int characterNum= i;
 				}
 				
 				JSONsend(toClient, JSONtext(clientName + ", type 'START' to begin game!"));
@@ -209,8 +212,7 @@ public class Server {
 						JSONsend(toClient, JSONimage("lose.jpg"));
 						break;
 					}
-				String characterName= questionPokemon[i].getName();
-				take(characterName);					
+				
 				}
 
 				
@@ -228,7 +230,7 @@ public class Server {
 			}
 		}
 	}
-		public static String take(String s){
+		public static int take(int s){
 			return s;
 		}		
 	
@@ -341,7 +343,7 @@ public class Server {
 			String answer = clientJson.getString("data");
 			Boolean check = answer.equalsIgnoreCase(expected);
 			int next = 1;
-			String n="";
+			int n=0;
 			
 			while(check == false) {
 				JSONsend(out, JSONtext("Wrong answer! Please try again."));
