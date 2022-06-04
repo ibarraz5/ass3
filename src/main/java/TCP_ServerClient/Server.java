@@ -177,7 +177,6 @@ public class Server {
 				
 				allQuotes = Quotes.allQuotes();
 				questionQuotes = new Quotes[numQuestions]; 
-				int i=0;
 					questionQuotes[i] = allQuotes[numQuestions];
 				
 				
