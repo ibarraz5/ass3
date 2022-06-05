@@ -140,7 +140,7 @@ public class Server {
 				return this.image;
 			}
 			public int getInt(){
-				return this.num;
+				return this.number;
 			}
 		}
 		/*
@@ -185,7 +185,7 @@ public class Server {
 				
 				for (int i = 0; i < numQuestions; i++) {
 					questionQuotes[i] = allQuotes[randomizer.nextInt(totalQuotes)];
-					int characterNum= i;
+					int characterNum= questionQuotes[i].getInt();
 				}
 
 				
@@ -350,7 +350,7 @@ public class Server {
 			String answer = clientJson.getString("data");
 			Boolean check = answer.equalsIgnoreCase(expected);
 			int next = 1;
-			int current= questionQuotes[i].getInt();
+			
 			
 			while(check == false) {
 				JSONsend(out, JSONtext("Wrong answer! Please try again."));
@@ -358,9 +358,9 @@ public class Server {
 				clientJson = JSONreceive(in);
 				answer = clientJson.getString("data");
 				check = answer.equalsIgnoreCase(expected);
-				JSONsend(out, JSONimage("character-"+current+"-"+next+".jpg"));
+				JSONsend(out, JSONimage("character-"+characterNum+"-"+next+".jpg"));
 				next++;
-				current++;
+				characterNum++;
 			}
 			JSONsend(out, JSONtext("CORRECT! It's " + expected + "!"));
 			return clientJson;
