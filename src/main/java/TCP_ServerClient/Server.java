@@ -190,7 +190,7 @@ public class Server {
 
 				
 				
-				JSONsend(toClient, JSONtext(clientName + ", type 'START' to begin game!"));
+				JSONsend(toClient, JSONtext(clientName + ", type 'START' to begin game! or 'LEADERBOARD' for leadboard!));
 				questionManage(toClient, fromClient, JSONquestion("Would you like to start?"), "START");
 				JSONsend(toClient, JSONtext("Guess " + numQuestions + " quotes!"));
 				
