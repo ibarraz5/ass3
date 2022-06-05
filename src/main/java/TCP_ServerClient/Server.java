@@ -192,6 +192,7 @@ public class Server {
 				
 				JSONsend(toClient, JSONtext(clientName + ", type 'START' to begin game! or 'LEADERBOARD' for leadboard!));
 				questionManage(toClient, fromClient, JSONquestion("Would you like to start?"), "START");
+				questionManage(toClient, fromClient, JSONquestion("Would you like to see leaderboard?"), "LEADERBOARD");							    
 				JSONsend(toClient, JSONtext("Guess " + numQuestions + " quotes!"));
 				
 				Calendar cal = Calendar.getInstance();
@@ -349,7 +350,10 @@ public class Server {
 		else if (expected.equalsIgnoreCase("NONE")) {
 			return clientJson;
 			
-		} else if (expected.equalsIgnoreCase("START")) {
+		}else if(expected.equalsIgnoreCase("LEADERBOARD")){
+			JSONsend(out, JSONtext("Leaderboard: "));
+
+		}else if (expected.equalsIgnoreCase("START")) {
 			String answer = clientJson.getString("data");
 			Boolean check = answer.equalsIgnoreCase("START");
 			while(check == false) {
