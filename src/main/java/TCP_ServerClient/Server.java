@@ -194,10 +194,10 @@ public class Server {
 				JSONObject clientChoice = questionManage(toClient, fromClient, JSONquestion("What is your choice?"), "NONE");				
 				choose = clientChoice.getString("data");	
 				if(choose.equals("start")){
-					questionManage(toClient, fromClient, JSONquestion("Would you like to start?"), "START");
+					questionManage(toClient, fromClient, JSONquestion("Type 'start' to confirm?"), "START");
 
 				}else if(choose.equals("leaderboard")){
-					questionManage(toClient, fromClient, JSONquestion("Would you like to see leaderboard?"), "LEADERBOARD");
+					questionManage(toClient, fromClient, JSONquestion("Type 'leaderboard' to confirm??"), "LEADERBOARD");
 				}				
 				JSONsend(toClient, JSONtext("Guess " + numQuestions + " quotes!"));
 				
@@ -357,7 +357,7 @@ public class Server {
 			return clientJson;
 			
 		}else if(expected.equalsIgnoreCase("LEADERBOARD")){
-			JSONsend(out, JSONtext("Leaderboard: "));
+			JSONsend(out, JSONtext("Leaderboard: 1)Ivan 13 points  2)d 0 points"));
 			return clientJson;			
 		}else if (expected.equalsIgnoreCase("START")) {
 			String answer = clientJson.getString("data");
