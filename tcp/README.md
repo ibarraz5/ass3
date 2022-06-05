@@ -16,8 +16,11 @@ For more details see code and/or video.
 `cd tcp/`
 
 `gradle runServer`
+
 `gradle runClient`
+
 `type "start" when prompted to start game`
+
 `to end game simply click X at the top right corner of GUI`
 
 
