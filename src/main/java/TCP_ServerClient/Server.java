@@ -201,6 +201,7 @@ public class Server {
 		        Calendar cal2;
 				Date currentTime;
 				int correctAnswers = 0;
+				int points=0;
 				
 				for (int i = 0; i < numQuestions; i++) {
 					
@@ -216,6 +217,18 @@ public class Server {
 					JSONsend(toClient, JSONtext("Time to Finish: " + finishTime));
 					if (currentTime.after(finishTime)) {
 						JSONsend(toClient, JSONtext("TIMES UP! Sorry, you lost!"));
+						if(correctAnswers==1){
+							points=5;
+							JSONsend(toClient, JSONtext("You scored "+points+" points!"));
+						}else if(correctAnswers==2){
+							points=points+4;
+							JSONsend(toClient, JSONtext("You scored "+points+" points!"));
+						}else if(correctAnswers==3){
+							points=points+3;
+							JSONsend(toClient, JSONtext("You scored "+points+" points!"));
+						}else{
+							JSONsend(toClient, JSONtext("You scored no points!"));
+						}	
 						JSONsend(toClient, JSONimage("lose.jpg"));
 						break;
 					}
@@ -226,6 +239,7 @@ public class Server {
 				if (correctAnswers == numQuestions) {
 					JSONsend(toClient, JSONimage("win.jpg")); // send success image
 					JSONsend(toClient, JSONtext("CONGRATULATIONS! You're a Winner!"));
+					JSONsend(toClient, JSONtext("You scored 13 points!"));					
 				}
 				
 				JSONsend(toClient, JSONtext("Press the [X] button to finish."));
