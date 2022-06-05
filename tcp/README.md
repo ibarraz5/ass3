@@ -15,6 +15,8 @@ For more details see code and/or video.
 
 `cd tcp/`
 
+`For best results run gradle for server before client:`
+
 `gradle runServer`
 
 `gradle runClient`
@@ -31,6 +33,9 @@ For more details see code and/or video.
 
 *	The user should send their name and the server should receive it and greet
 	the user by name.
+	
+*	The user should be presented a choice between seeing a leader board or
+	playing the game (make the interface easy so a user will know what to do).	
 
 *	If the user chooses to start the game, the server will then send over a first
 	quote of a character – you need to print the intended answer in the server terminal
