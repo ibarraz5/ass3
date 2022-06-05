@@ -191,8 +191,7 @@ public class Server {
 				
 				
 				JSONsend(toClient, JSONtext(clientName + ", type 'START' to begin game! or 'LEADERBOARD' for leadboard!"));
-				questionManage(toClient, fromClient, JSONquestion("Would you like to start?"), "START");
-				questionManage(toClient, fromClient, JSONquestion("Would you like to see leaderboard?"), "LEADERBOARD");							    
+				questionManage(toClient, fromClient, JSONquestion("Would you like to start or leaderboard?"), "START", "LEADERBOARD");
 				JSONsend(toClient, JSONtext("Guess " + numQuestions + " quotes!"));
 				
 				Calendar cal = Calendar.getInstance();
