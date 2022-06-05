@@ -187,11 +187,17 @@ public class Server {
 					questionQuotes[i] = allQuotes[randomizer.nextInt(totalQuotes)];
 					int characterNum= questionQuotes[i].getInt();
 				}
+				
+				String choose= "none";
+				
+				JSONsend(toClient, JSONtext(clientName + ", type 'START' to begin game! or 'LEADERBOARD' for leaderboard!"));
+				choose = clientName.getString("data");	
+				if(choose.equals("leaderboard")){
+					questionManage(toClient, fromClient, JSONquestion("Would you like to start?"), "START");
 
-				
-				
-				JSONsend(toClient, JSONtext(clientName + ", type 'START' to begin game! or 'LEADERBOARD' for leadboard!"));
-				questionManage(toClient, fromClient, JSONquestion("Would you like to start or leaderboard?"), "START", "LEADERBOARD");
+				}else if(choose.equals("start")){
+					questionManage(toClient, fromClient, JSONquestion("Would you like to see leaderboard?"), "LEADERBOARD");
+				}				
 				JSONsend(toClient, JSONtext("Guess " + numQuestions + " quotes!"));
 				
 				Calendar cal = Calendar.getInstance();
