@@ -139,6 +139,9 @@ public class Server {
 			public String getImage() {
 				return this.image;
 			}
+			public int getInt(){
+				return this.num;
+			}
 		}
 		/*
 		 * properties of the Match class
@@ -347,7 +350,7 @@ public class Server {
 			String answer = clientJson.getString("data");
 			Boolean check = answer.equalsIgnoreCase(expected);
 			int next = 1;
-			int c=0;
+			int current= questionQuotes[i].getInt();
 			
 			while(check == false) {
 				JSONsend(out, JSONtext("Wrong answer! Please try again."));
@@ -355,8 +358,9 @@ public class Server {
 				clientJson = JSONreceive(in);
 				answer = clientJson.getString("data");
 				check = answer.equalsIgnoreCase(expected);
-				JSONsend(out, JSONimage("character-"+character+"-"+next+".jpg"));
+				JSONsend(out, JSONimage("character-"+current+"-"+next+".jpg"));
 				next++;
+				current++;
 			}
 			JSONsend(out, JSONtext("CORRECT! It's " + expected + "!"));
 			return clientJson;
