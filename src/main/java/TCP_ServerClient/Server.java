@@ -352,7 +352,7 @@ public class Server {
 			
 		}else if(expected.equalsIgnoreCase("LEADERBOARD")){
 			JSONsend(out, JSONtext("Leaderboard: "));
-
+			return clientJson;			
 		}else if (expected.equalsIgnoreCase("START")) {
 			String answer = clientJson.getString("data");
 			Boolean check = answer.equalsIgnoreCase("START");
