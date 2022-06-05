@@ -193,10 +193,10 @@ public class Server {
 				JSONsend(toClient, JSONtext(clientName + ", type 'START' to begin game! or 'LEADERBOARD' for leaderboard!"));
 				JSONObject clientChoice = questionManage(toClient, fromClient, JSONquestion("What is your choice?"), "NONE");				
 				choose = clientChoice.getString("data");	
-				if(choose.equals("leaderboard")){
+				if(choose.equals("start")){
 					questionManage(toClient, fromClient, JSONquestion("Would you like to start?"), "START");
 
-				}else if(choose.equals("start")){
+				}else if(choose.equals("leaderboard")){
 					questionManage(toClient, fromClient, JSONquestion("Would you like to see leaderboard?"), "LEADERBOARD");
 				}				
 				JSONsend(toClient, JSONtext("Guess " + numQuestions + " quotes!"));
