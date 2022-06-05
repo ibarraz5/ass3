@@ -71,7 +71,8 @@ It is suggested that you play with this and try to include some of the below for
 - Error handling is very basic and not complete
 - Always send the same joke, quote and picture. Having more of each and randomly selecting with also making sure to not duplicate things would improve things
 
-![](img/jpg/win.jpg)
+# UML Diagram
+![](img/jpg/uml.jpg)
 
 # UDP
 
