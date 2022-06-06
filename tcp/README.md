@@ -6,7 +6,7 @@ This is for the TCP version of the movie quote guessing game.
 
 This program is  actually converting all the data to a byte[] and not just sending over the String and letting Java do the rest.
 
-Client connects to server. Server asks Client for their name. The game then starts by providing the player or client a picutre of the first quote from a randomized character selection. The server is on port 8080 and the client has to connect to the server for the game to start. The game is also then displayed on a GUI where the server and client commmunicate. The goal of the game is to guess the movie character that said the quote. The player gets to choose another quote to guess or the quote changes after they get it wrong.
+Client connects to server. Server asks Client for their name. The game then starts by providing the player or client a picutre of the first quote from a randomized character selection. The server is on port 8080 and the client has to connect to the server for the game to start. The game is also then displayed on a GUI where the server and client commmunicate. The goal of the game is to guess the movie character that said the quote. The player gets to choose another quote to guess or the quote changes after they get it wrong. If the player is able to guess all of the quotes within the time given (1 minute), they win. If they aren't able to do that, they lose.
 
 For more details see code and/or video.
 
@@ -22,6 +22,10 @@ For more details see code and/or video.
 `gradle runClient`
 
 `type "start" when prompted to start game`
+
+`when entering a guess type in the box and click the submit button`
+
+`The answers show up on the screen that ran the server`
 
 `to end game simply click X at the top right corner of GUI`
 
@@ -80,18 +84,10 @@ For more details see code and/or video.
 *	Evaluations of the answer happen on the server side, the client
 	does not know the questions and their answers.   
    
-## Issues in the code that were not included on purpose
-The code is basically to show you how you can use a TCP connection to send over different data and interpret it on either side. It focuses on this alone and not on error handling and some nicer features.
-It is suggested that you play with this and try to include some of the below for your own practice. 
+## Description of protocol
 
-- Not very robust, e.g. user enters String
-- Second client can connect to socket but will not be informed that there is already a connection from other client thus the server will not response
-	- More than one thread can solve this
-	- can consider that client always connects with each new request
-		- drawback if server is working with client A then client B still cannot connect, not very robust
-- Protocol is very simple no header and payload, here we just used data and type to simplify things
-- Error handling is very basic and not complete
-- Always send the same joke, quote and picture. Having more of each and randomly selecting with also making sure to not duplicate things would improve things
+ When you enter the wrong answer it will automatically bring up a new quote. The answers of the quotes do show up on the screen where the server was ran. The requests coming from the server are sent as Server: and then whatever the command may be. When you are playing as the client, you can enter your guess in the box under the image and click the submit button to send it. The input text you add to the text box doesn't matter 
+
 
 # UML Diagram
 ![](img/jpg/uml.jpg)
