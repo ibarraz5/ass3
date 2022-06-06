@@ -167,7 +167,7 @@ public class Server {
 			this.clientName = n;
 			this.numQuestions = q;
 			this.matchID = i;
-			this.time = q * 20;
+			this.time = 60; //set time for 1 minute max
 		}
 	
 		/**
