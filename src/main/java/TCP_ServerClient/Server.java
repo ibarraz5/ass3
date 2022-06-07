@@ -389,11 +389,12 @@ public class Server {
 				check = answer.equalsIgnoreCase(expected);
 				JSONsend(out, JSONimage("character-"+characterNum+"-"+next+".jpg"));
 				characterNum++;
-			}else{
+			}else if(check==true){
 			JSONsend(out, JSONtext("CORRECT! It's " + expected + "!"));
 			return clientJson;
 			}
 			}
+			JSONsend(out, JSONtext("Wrong you're out of guesses! It's " + expected + "!"));			
 			return clientJson;
 		}
 	}
