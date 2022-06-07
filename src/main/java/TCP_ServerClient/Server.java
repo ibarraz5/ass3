@@ -374,7 +374,7 @@ public class Server {
 			String answer = clientJson.getString("data");
 			Boolean check = answer.equalsIgnoreCase(expected);
 			int next = 1;
-			String next= "next";
+			String nextS= "next";
 			String more="more";
 			Boolean check2 = answer.equalsIgnoreCase(next);
 			Boolean check3 = answer.equalsIgnoreCase(more);
@@ -388,7 +388,6 @@ public class Server {
 				answer = clientJson.getString("data");
 				check = answer.equalsIgnoreCase(expected);
 				JSONsend(out, JSONimage("character-"+characterNum+"-"+next+".jpg"));
-				next++;
 				characterNum++;
 			}else{
 			JSONsend(out, JSONtext("CORRECT! It's " + expected + "!"));
