@@ -374,6 +374,11 @@ public class Server {
 			String answer = clientJson.getString("data");
 			Boolean check = answer.equalsIgnoreCase(expected);
 			int next = 1;
+			String next= "next";
+			String more="more";
+			Boolean check2 = answer.equalsIgnoreCase(next);
+			Boolean check3 = answer.equalsIgnoreCase(more);
+			
 			
 			
 			while(check == false) {
