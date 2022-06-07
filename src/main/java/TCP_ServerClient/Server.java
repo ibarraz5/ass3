@@ -380,8 +380,8 @@ public class Server {
 			Boolean check3 = answer.equalsIgnoreCase(more);
 			
 			
-			
-			while(check == false) {
+			for(int i=1; i<3; i++){ 
+			if(check == false) {
 				JSONsend(out, JSONtext("Wrong answer! Please try again."));
 				JSONsend(out, jsonQuestion);
 				clientJson = JSONreceive(in);
@@ -390,9 +390,11 @@ public class Server {
 				JSONsend(out, JSONimage("character-"+characterNum+"-"+next+".jpg"));
 				next++;
 				characterNum++;
-			}
+			}else{
 			JSONsend(out, JSONtext("CORRECT! It's " + expected + "!"));
 			return clientJson;
+			}
+			}
 		}
 	}
 	
