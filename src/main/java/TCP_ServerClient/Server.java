@@ -394,6 +394,7 @@ public class Server {
 			return clientJson;
 			}
 			}
+			return clientJson;
 		}
 	}
 	
