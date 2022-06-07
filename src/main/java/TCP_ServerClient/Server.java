@@ -376,7 +376,7 @@ public class Server {
 			int next = 1;
 			String nextS= "next";
 			String more="more";
-			Boolean check2 = answer.equalsIgnoreCase(next);
+			Boolean check2 = answer.equalsIgnoreCase(nextS);
 			Boolean check3 = answer.equalsIgnoreCase(more);
 			
 			
