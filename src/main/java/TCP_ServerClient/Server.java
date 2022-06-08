@@ -393,18 +393,21 @@ public class Server {
 				characterNum++;
 			}else if(check==true){
 			JSONsend(out, JSONtext("CORRECT! It's " + expected + "!"));
+			current++;
 			return clientJson;
 			}else if(check2==true){
 				points= points-2;
 				correctAnswers= correctAnswers-1;
+				current++;
 				break;
 			}else if(check3==true){
-				characterNum++;				
+				characterNum++;	
 			}
 			}
 			JSONsend(out, JSONtext("Wrong you're out of guesses! It's " + expected + "!"));	
 			points= points-2;
 			correctAnswers=correctAnswers -1;
+			current++;
 			return clientJson;
 		}
 	}
