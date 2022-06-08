@@ -390,7 +390,6 @@ public class Server {
 				answer = clientJson.getString("data");
 				check = answer.equalsIgnoreCase(expected);
 				JSONsend(out, JSONimage("character-"+characterNum+"-"+next+".jpg"));
-				characterNum++;
 				next++;
 			}else if(check==true){
 			JSONsend(out, JSONtext("CORRECT! It's " + expected + "!"));
@@ -399,7 +398,6 @@ public class Server {
 			}else if(check2==true){
 				points= points-2;
 				correctAnswers= correctAnswers-1;
-				characterNum++;
 				break;
 			}else if(check3==true){
 				next++;	
