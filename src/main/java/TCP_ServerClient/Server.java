@@ -391,23 +391,24 @@ public class Server {
 				check = answer.equalsIgnoreCase(expected);
 				JSONsend(out, JSONimage("character-"+characterNum+"-"+next+".jpg"));
 				characterNum++;
+				next++;
 			}else if(check==true){
 			JSONsend(out, JSONtext("CORRECT! It's " + expected + "!"));
-			current= current+1;
+			characterNum++;
 			return clientJson;
 			}else if(check2==true){
 				points= points-2;
 				correctAnswers= correctAnswers-1;
-				current= current+1;
+				characterNum++;
 				break;
 			}else if(check3==true){
-				characterNum++;	
+				next++;	
 			}
 			}
 			JSONsend(out, JSONtext("Wrong you're out of guesses! It's " + expected + "!"));	
 			points= points-2;
 			correctAnswers=correctAnswers -1;
-			current= current+1;
+			characterNum++;
 			return clientJson;
 		}
 	}
