@@ -393,12 +393,14 @@ public class Server {
 			JSONsend(out, JSONtext("CORRECT! It's " + expected + "!"));
 			return clientJson;
 			}else if(check2==true){
+				points= points-2;
 				break;
 			}else if(check3==true){
-				JSONsend(out, JSONimage("character-"+characterNum+"-"+next+".jpg"));				
+				characterNum++;				
 			}
 			}
-			JSONsend(out, JSONtext("Wrong you're out of guesses! It's " + expected + "!"));			
+			JSONsend(out, JSONtext("Wrong you're out of guesses! It's " + expected + "!"));	
+			points= points-2;			
 			return clientJson;
 		}
 	}
