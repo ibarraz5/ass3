@@ -21,7 +21,7 @@ public class Server {
 	static int points=0;	
 	static int correctAnswers = 0;
 	static int current=0;
-	static int characterNum= questionQuotes[current].getInt();;
+	static int characterNum= 1;
 	
 	public static Boolean clientOn;
 	
@@ -188,6 +188,7 @@ public class Server {
 				for (int i = 0; i < numQuestions; i++) {
 					questionQuotes[i] = allQuotes[randomizer.nextInt(totalQuotes)];
 				}
+				characterNum= questionQuotes[current].getInt()
 				String choose= "none";
 				
 				JSONsend(toClient, JSONtext(clientName + ", type 'START' to begin game! or 'LEADERBOARD' for leaderboard!"));
