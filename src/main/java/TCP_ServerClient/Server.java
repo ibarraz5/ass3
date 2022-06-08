@@ -393,7 +393,7 @@ public class Server {
 			JSONsend(out, JSONtext("CORRECT! It's " + expected + "!"));
 			return clientJson;
 			}else if(check2==true){
-				i=3;
+				break;
 			}else if(check3==true){
 				JSONsend(out, JSONimage("character-"+characterNum+"-"+next+".jpg"));				
 			}
