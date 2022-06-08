@@ -187,6 +187,7 @@ public class Server {
 				
 				for (int i = 0; i < numQuestions; i++) {
 					questionQuotes[i] = allQuotes[randomizer.nextInt(totalQuotes)];
+					current++;
 				}
 				characterNum= questionQuotes[current].getInt();
 				String choose= "none";
@@ -392,7 +393,6 @@ public class Server {
 				next++;
 			}else if(check==true){
 			JSONsend(out, JSONtext("CORRECT! It's " + expected + "!"));
-			characterNum++;
 			return clientJson;
 			}else if(check2==true){
 				points= points-2;
@@ -405,7 +405,6 @@ public class Server {
 			JSONsend(out, JSONtext("Wrong you're out of guesses! It's " + expected + "!"));	
 			points= points-2;
 			correctAnswers=correctAnswers -1;
-			characterNum++;
 			return clientJson;
 		}
 	}
