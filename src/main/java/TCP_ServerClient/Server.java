@@ -20,6 +20,7 @@ public class Server {
 	static Random randomizer = new Random();
 	static int character= randomizer.nextInt(7);
 	static int points=0;	
+	static int correctAnswers = 0;
 
 	
 	public static Boolean clientOn;
@@ -208,7 +209,6 @@ public class Server {
 		        Date finishTime = cal.getTime();
 		        Calendar cal2;
 				Date currentTime;
-				int correctAnswers = 0;
 				
 				for (int i = 0; i < numQuestions; i++) {
 					
@@ -394,13 +394,15 @@ public class Server {
 			return clientJson;
 			}else if(check2==true){
 				points= points-2;
+				correctAnswers= correctAnswers-1;
 				break;
 			}else if(check3==true){
 				characterNum++;				
 			}
 			}
 			JSONsend(out, JSONtext("Wrong you're out of guesses! It's " + expected + "!"));	
-			points= points-2;			
+			points= points-2;
+			correctAnswers=correctAnswers -1;
 			return clientJson;
 		}
 	}
