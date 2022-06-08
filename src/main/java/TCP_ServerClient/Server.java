@@ -387,11 +387,11 @@ public class Server {
 				JSONsend(out, jsonQuestion);
 				clientJson = JSONreceive(in);
 				answer = clientJson.getString("data");
-				check = answer.equalsIgnoreCase(expected);
 				JSONsend(out, JSONimage("character-"+characterNum+"-"+next+".jpg"));
 				next++;
 			}else if(check==true){
 			JSONsend(out, JSONtext("CORRECT! It's " + expected + "!"));
+			current++;
 			return clientJson;
 			}else if(check2==true){
 				points= points-2;
@@ -404,6 +404,7 @@ public class Server {
 			JSONsend(out, JSONtext("Wrong you're out of guesses! It's " + expected + "!"));	
 			points= points-2;
 			correctAnswers=correctAnswers -1;
+			current++;			
 			return clientJson;
 		}
 	}
