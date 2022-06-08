@@ -387,6 +387,7 @@ public class Server {
 				JSONsend(out, jsonQuestion);
 				clientJson = JSONreceive(in);
 				answer = clientJson.getString("data");
+				check = answer.equalsIgnoreCase(expected);
 				JSONsend(out, JSONimage("character-"+characterNum+"-"+next+".jpg"));
 				next++;
 			}else if(check==true){
