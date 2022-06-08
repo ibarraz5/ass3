@@ -187,9 +187,8 @@ public class Server {
 				
 				for (int i = 0; i < numQuestions; i++) {
 					questionQuotes[i] = allQuotes[randomizer.nextInt(totalQuotes)];
-					int characterNum= questionQuotes[i].getInt();
 				}
-				
+					 characterNum= questionQuotes[i].getInt();				
 				String choose= "none";
 				
 				JSONsend(toClient, JSONtext(clientName + ", type 'START' to begin game! or 'LEADERBOARD' for leaderboard!"));
