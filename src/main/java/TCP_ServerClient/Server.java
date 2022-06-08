@@ -286,7 +286,7 @@ public class Server {
 		
 		File imgFile = new File("img/jpg/" + s);
 		if (!imgFile.exists()) {
-			return JSONerror("ERROR: Server could not send image!");
+			return JSONerror(" Server could not send image!");
 		}
 		
 		BufferedImage img = ImageIO.read(imgFile);
@@ -381,7 +381,7 @@ public class Server {
 			Boolean check3 = answer.equalsIgnoreCase(more);
 			
 			
-			for(int i=1; i<3; i++){ 
+			for(int i=1; i<4; i++){ 
 			if(check == false) {
 				JSONsend(out, JSONtext("Wrong answer! Please try again."));
 				JSONsend(out, jsonQuestion);
