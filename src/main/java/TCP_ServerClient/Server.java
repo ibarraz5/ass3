@@ -16,13 +16,12 @@ import java.util.Random;
  */
 public class Server {
 	
-	static int characterNum=1;
 	static Random randomizer = new Random();
 	static int character= randomizer.nextInt(7);
 	static int points=0;	
 	static int correctAnswers = 0;
 	static int current=0;
-
+	static int characterNum= questionQuotes[current].getInt();;
 	
 	public static Boolean clientOn;
 	
@@ -189,7 +188,6 @@ public class Server {
 				for (int i = 0; i < numQuestions; i++) {
 					questionQuotes[i] = allQuotes[randomizer.nextInt(totalQuotes)];
 				}
-					 characterNum= questionQuotes[current].getInt();				
 				String choose= "none";
 				
 				JSONsend(toClient, JSONtext(clientName + ", type 'START' to begin game! or 'LEADERBOARD' for leaderboard!"));
