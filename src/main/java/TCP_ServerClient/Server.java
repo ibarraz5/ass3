@@ -247,8 +247,10 @@ public class Server {
 					JSONsend(toClient, JSONimage("win.jpg")); // send success image
 					JSONsend(toClient, JSONtext("CONGRATULATIONS! You're a Winner!"));
 					JSONsend(toClient, JSONtext("You scored 13 points!"));					
+				}else{
+					JSONsend(toClient, JSONimage("lose.jpg"));
+					JSONsend(toClient, JSONtext("Sorry! You're a Loser!"));					
 				}
-				
 				JSONsend(toClient, JSONtext("Press the [X] button to finish."));
 				
 			} catch (IOException IOex) {
