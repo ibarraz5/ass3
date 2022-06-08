@@ -19,6 +19,7 @@ public class Server {
 	static int characterNum=1;
 	static Random randomizer = new Random();
 	static int character= randomizer.nextInt(7);
+	static int points=0;	
 
 	
 	public static Boolean clientOn;
@@ -208,7 +209,6 @@ public class Server {
 		        Calendar cal2;
 				Date currentTime;
 				int correctAnswers = 0;
-				int points=0;
 				
 				for (int i = 0; i < numQuestions; i++) {
 					
