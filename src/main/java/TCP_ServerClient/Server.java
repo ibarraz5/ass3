@@ -187,7 +187,6 @@ public class Server {
 				
 				for (int i = 0; i < numQuestions; i++) {
 					questionQuotes[i] = allQuotes[randomizer.nextInt(totalQuotes)];
-					current++;
 				}
 				characterNum= questionQuotes[current].getInt();
 				String choose= "none";
