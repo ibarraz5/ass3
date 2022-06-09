@@ -112,16 +112,9 @@ For more details see code and/or video.
   already displayed for this character, then they need to be informed that there are
   no more pictures (quotes) for this character and the image should not change.
 
+# UML Diagram
+![](img/jpg/uml.jpg)
 
-# UDP
-
-The main differences can be seen in NetworkUtils.java. In there the sending and reading of messages happen. For UDP the max buffer length is assumed to be 1024 bytes. So if the package is bigger it is split up into multiple packages. Ever package holds the information about the following data
-     *   totalPackets(4-byte int),  -- number of total packages
-     *   currentPacket#(4-byte int),  -- number of current package
-     *   payloadLength(4-byte int), -- length of the payload for this package
-     *   payload(byte[]) -- payload
-
-Client and server are very similar to the TCP example just the connection of course is UDP instead of TCP. The UDP version has the same issues as the TCP example and that is again on purpose. 
 
 # Screencast: 
 - Network: https://www.youtube.com/watch?v=3pspc90CBoo
