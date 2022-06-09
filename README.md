@@ -106,7 +106,7 @@ For more details see code and/or video.
   no more pictures (quotes) for this character and the image should not change.
 
 # UML Diagram
-![](img/jpg/uml.jpg)
+![](tcp/img/jpg/uml.jpg)
 
 # UDP
 
