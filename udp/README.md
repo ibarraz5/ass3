@@ -23,6 +23,10 @@ For more details see code and/or video.
 
 `type "start" when prompted to start game`
 
+`when entering a guess type in the box and click the submit button`
+
+`The answers show up on the screen that ran the server`
+
 `to end game simply click X at the top right corner of GUI`
 
 ### Requirements Fullfilled
@@ -77,20 +81,14 @@ For more details see code and/or video.
 *	Images are only know by and handled on the server.
 
 *	Evaluations of the answer happen on the server side, the client
-	does not know the questions and their answers.  
+	does not know the questions and their answers.
    
-## Issues in the code that were not included on purpose
-The code is basically to show you how you can use a TCP connection to send over different data and interpret it on either side. It focuses on this alone and not on error handling and some nicer features.
-It is suggested that you play with this and try to include some of the below for your own practice. 
+## Issues in the code that were not included
 
-- Not very robust, e.g. user enters String
-- Second client can connect to socket but will not be informed that there is already a connection from other client thus the server will not response
-	- More than one thread can solve this
-	- can consider that client always connects with each new request
-		- drawback if server is working with client A then client B still cannot connect, not very robust
-- Protocol is very simple no header and payload, here we just used data and type to simplify things
-- Error handling is very basic and not complete
-- Always send the same joke, quote and picture. Having more of each and randomly selecting with also making sure to not duplicate things would improve things
+* If the user enters "more" then they will get another quote from the same
+  movie character. However, If they enter "more" when the final unique image was
+  already displayed for this character, then they need to be informed that there are
+  no more pictures (quotes) for this character and the image should not change.
 
 # UML Diagram
 ![](img/jpg/uml.jpg)
@@ -104,6 +102,9 @@ The main differences can be seen in NetworkUtils.java. In there the sending and 
      *   payload(byte[]) -- payload
 
 Client and server are very similar to the TCP example just the connection of course is UDP instead of TCP. The UDP version has the same issues as the TCP example and that is again on purpose. 
+
+# UML Diagram
+![](img/jpg/uml.jpg)
 
 # Screencast: 
 
