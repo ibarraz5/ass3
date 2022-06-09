@@ -84,9 +84,12 @@ For more details see code and/or video.
 *	Evaluations of the answer happen on the server side, the client
 	does not know the questions and their answers.   
    
-## Description of protocol
+## Issues in the code that were not included
 
- When you enter the wrong answer it will automatically bring up a new quote. The answers of the quotes do show up on the screen where the server was ran. The requests coming from the server are sent as Server: and then whatever the command may be. When you are playing as the client, you can enter your guess in the box under the image and click the submit button to send it. The input text you add to the text box doesn't matter 
+* If the user enters "more" then they will get another quote from the same
+  movie character. However, If they enter "more" when the final unique image was
+  already displayed for this character, then they need to be informed that there are
+  no more pictures (quotes) for this character and the image should not change. 
 
 
 # UML Diagram
