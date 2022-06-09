@@ -18,7 +18,7 @@ task TCPServer(type: JavaExec) {
 
   classpath = sourceSets.main.runtimeClasspath
 
-  main = 'tcp.Server'
+	main = 'tcp.TCP_ServerClient.Server'
   standardInput = System.in
 }
 
@@ -28,7 +28,7 @@ task TCPClient(type: JavaExec) {
 
   classpath = sourceSets.main.runtimeClasspath
 
-  main = 'tcp.Client'
+	main = 'tcp.TCP_ServerClient.Client'
   standardInput = System.in
 }
 
@@ -38,7 +38,7 @@ task UDPServer(type: JavaExec) {
 
   classpath = sourceSets.main.runtimeClasspath
 
-  main = 'udp.Server'
+	main = 'tcp.TCP_ServerClient.Client'
   standardInput = System.in
 }
 
@@ -48,6 +48,6 @@ task UDPClient(type: JavaExec) {
 
   classpath = sourceSets.main.runtimeClasspath
 
-  main = 'udp.Client'
+	main = 'udp.TCP_ServerClient.Client'
   standardInput = System.in
 }
